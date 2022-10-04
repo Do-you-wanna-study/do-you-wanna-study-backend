@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 
-
 const mainPage = (req : Request, res : Response) => {
 	res.send('default (all) Page!');
 }
@@ -13,10 +12,10 @@ const doneStudy = (req : Request, res : Response) =>{
 	res.send('done study')
 }
 
-const community = {
+const communityController = {
 	mainPage,
 	procStudy,
 	doneStudy
 }
 
-export default community;
+export default communityController;

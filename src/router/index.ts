@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import auth from './authRouter'
+import login from './loginRouter'
 import community from './communityRouter'
 import myPage from './myPageRouter'
 
 const router : Router = Router();
 
-router.use('/login', auth)
+router.use('/login', login)
 router.use('/community', community)
 router.use('/mypage', myPage)
 

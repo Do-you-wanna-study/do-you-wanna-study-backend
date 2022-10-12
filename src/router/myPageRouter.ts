@@ -1,7 +1,8 @@
-var express : any = require('express');
+import express from 'express'
+import myPageController from '../controller/myPageController';
 
-var router : any = express.Router({mergeParams : true});
+const router : express.Router = express.Router({mergeParams : true});
 
-// router.get('/mypage', )
+router.get('/mypage', myPageController.getMyPage)
 
 export default router;

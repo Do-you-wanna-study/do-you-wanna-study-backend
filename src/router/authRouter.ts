@@ -1,4 +1,5 @@
 import express from 'express';
+import { transformAuthInfo } from 'passport';
 import authController from '../controller/authController'
 import passport from '../middleware/passport'
 
@@ -14,5 +15,7 @@ router.post('/login',  passport.authenticate('local', {
 authController.tryLogin)
 
 router.get('/logout', authController.logout)
+
+router.post('/signup', authController.signUp)
 
 export default router;

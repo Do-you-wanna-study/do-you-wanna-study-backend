@@ -3,6 +3,7 @@ import auth from './authRouter'
 import community from './communityRouter'
 import myPage from './myPageRouter'
 
+
 const router : Router = Router();
 
 router.use('/auth', auth)

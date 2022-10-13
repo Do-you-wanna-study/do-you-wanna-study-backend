@@ -11,11 +11,10 @@ router.post('/login',  passport.authenticate('local', {
 	successRedirect: '/',
 	failureRedirect: '/login',
  }),
- 
 authController.tryLogin)
 
 router.get('/logout', authController.logout)
 
-router.post('/signup', authController.signUp)
+router.post('/signup', authController.signUpProcess)
 
 export default router;

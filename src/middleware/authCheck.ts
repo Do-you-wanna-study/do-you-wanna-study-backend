@@ -2,14 +2,16 @@ import {Response, Request, NextFunction} from 'express'
 
 const isLogin : Function = (req : Request , res : Response, next : NextFunction) =>{
 	if (req.user){
-		return true;
+		console.log("logined ", req.user)
+		next()
 	}else{
-		return false;
+		console.log('not logined')
+		res.redirect('/auth/login')
 	}
 }
 
 
-const authCheck : Object = {
+const authCheck = {
 	isLogin
 }
 

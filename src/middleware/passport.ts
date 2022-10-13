@@ -1,46 +1,67 @@
 import passport from 'passport';
-const LocalStrategy = require('passport-local').Strategy
+import passportLocal from 'passport-local'
+import db from '../db/config'
 
-
-const authData = {
-	email : 'mihnhyuk',
-	password : '1234'
-}
+const LocalStrategy = passportLocal.Strategy
 
 passport.serializeUser((user: any, done: Function) => {
-	console.log("serialize", user)
-	done(null, user.email);
+	// console.log("serialize!! : ", user)
+	done(null, user);
 })
 
 passport.deserializeUser((user: any, done: Function) => {
-	console.log("deserialize called", user)
-	done(null, authData);
+	// console.log("deserialize called", user)
+	done(null, user);
 })
 
 passport.use(new LocalStrategy(
 	{
-		usernameField: 'email',
-		passwordField: 'password',
+		usernameField: 'id',
+		passwordField: 'pwd',
 		session: true,
 		passReqToCallback: false
 	},
 	function verify(username : any, password : any, done : Function) {
-		console.log('LocalStragegy', username, password)
-		if (username == authData.email){
-			if (password == authData.password){
-				console.log('success');
-				return done(null, authData)
-			}
-			else{
+		// console.log('LocalStragegy', username, password)
+		db.query('SELECT * FROM User WHERE user_id = ?',
+		[username], (err, results, field) => {
+			if (err){
+				console.log(err)
 				return done(null, false, {
-					message: 'Incorrect password'
+					message: 'db error'
 				})
 			}
-		}else{
-			return done(null, false, {
-				message: 'Incorrect username'
-			})
+			else{
+				if (results.length !== 0){
+					if (results[0].password === password){
+						return done(null, results[0].user_id)
+					}
+					else{
+						return done(null, false, {
+							message: 'pwd error'
+						})
+					}
+				}
+				return done(null, false, {
+					message: 'id error'
+				})
+			}
+		})
+		// if (username == authData.email){
+		// 	if (password == authData.password){
+		// 		console.log('success');
+		// 		return done(null, authData)
+		// 	}
+		// 	else{
+		// 		return done(null, false, {
+		// 			message: 'Incorrect password'
+		// 		})
+		// 	}
+		// }else{
+		// 	return done(null, false, {
+		// 		message: 'Incorrect username'
+		// 	})
 		}
-  }));
+  ));
 
   export default passport

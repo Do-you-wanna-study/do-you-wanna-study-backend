@@ -2,9 +2,10 @@ import express, { Request, Response, NextFunction } from 'express'
 import router from './router'
 import session from 'express-session'
 import db from './db/config'
-// const bodyParser = require('body-parser');
+import dotenv from 'dotenv';
 
-var app = express();
+const app = express();
+// const bodyParser = require('body-parser');
 
 db.connect()
 

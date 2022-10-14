@@ -1,8 +1,8 @@
-
 import { NextFunction, Request, Response } from 'express';
 import db from '../db/config'
 import template from '../lib/template'
 import status from '../modules/statusCode'
+import crypto from 'crypto'
 
 const loginPage = async (req: Request, res: Response, next: NextFunction) => {
   var title = 'WEB - login';
@@ -40,7 +40,6 @@ const signUpPage = (req: Request, res: Response, next: NextFunction) => {
   res.status(status.OK).send('sign up page');
 }
 
-
 /**
  * post body id, pwd
  */
@@ -54,7 +53,19 @@ const signUpProcess = (req: Request, res: Response, next: NextFunction) => {
         console.log(err);
         res.send(err);
       }else{
+        crypto.randomBytes(64, (err, salt) => {
+          crypto.pbkdf2(pwd, salt.toString('base64'), 100000, 64, 'sha512', (err, key) => {
+            console.log(key.toString('base64'));
+            console.log(salt)
+          });
+        });
         if (results.length === 0){
+          // crypto.randomBytes(64, (err, salt) => {
+          //   crypto.pbkdf2(pwd, salt.toString('base64'), 100000, 64, 'sha512', (err, key) => {
+          //     console.log(key.toString('base64'));
+          //   });
+          // });
+          
           console.log('create')
           let time = new Date()
           db.query('INSERT INTO ' +

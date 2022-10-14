@@ -1,20 +1,11 @@
-import express from 'express';
-import { transformAuthInfo } from 'passport';
-import authController from '../controller/authController'
-import passport from '../middleware/passport'
+import { Router } from 'express';
+import AuthController from '../controller/AuthController';
+import authCheck from '../middleware/authCheck';
 
-const router : express.Router = express.Router({mergeParams : true});
+const router: Router = Router();
 
-router.get('/login', authController.loginPage);
-
-router.post('/login',  passport.authenticate('local', { 
-	successRedirect: '/',
-	failureRedirect: '/login',
- }),
-authController.tryLogin)
-
-router.get('/logout', authController.logout)
-
-router.post('/signup', authController.signUpProcess)
+router.post('/login', AuthController.login);
+router.get('/logout', authCheck, AuthController.logout);
+router.post('/signup', AuthController.signUpProcess);
 
 export default router;

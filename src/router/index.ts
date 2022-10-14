@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import AuthRouter from './authRouter'
-import RecruitmentRouter from './recruitmentRouter'
+import RecruitmentRouter from './RecruitmentRouter'
 import MyPageRouter from './myPageRouter'
 
 const router : Router = Router();

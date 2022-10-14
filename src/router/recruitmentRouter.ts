@@ -1,14 +1,12 @@
-import express from 'express';
-import communityController from '../controller/communityController'
-import authCheck from '../middleware/authCheck'
+import { Router } from 'express';
+import RecruitmentController from '../controller/RecruitmentController';
+import AuthCheck from '../middleware/AuthCheck';
 
-var router : any = express.Router({mergeParams : true});
+const router: Router = Router();
 
-router.get('/', communityController.mainPage)
-router.get('/:communityID/all', communityController.mainPage)
-router.get('/:communityID/proc', communityController.procStudy)
-router.get('/:communityID/done', communityController.doneStudy)
-
-
+router.get('/', RecruitmentController.mainPage);
+router.get('/:communityID/all', RecruitmentController.mainPage);
+router.get('/:communityID/proc', RecruitmentController.procStudy);
+router.get('/:communityID/done', RecruitmentController.doneStudy);
 
 export default router;

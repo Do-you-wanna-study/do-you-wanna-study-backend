@@ -17,12 +17,12 @@ export class Community extends BaseEntity {
   updatedAt: Date;
 
   @OneToMany(() => Recruitment, (Recruitment) => Recruitment.community, {
-    cascade: true
+    cascade: true,
   })
   recruitmentList: Recruitment[];
 
   @OneToMany(() => UserToCommunity, (UserToCommunity) => UserToCommunity.community, {
-    cascade: true
+    cascade: true,
   })
   userToCommunityList: UserToCommunity[];
 }

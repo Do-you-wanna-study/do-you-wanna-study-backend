@@ -7,7 +7,7 @@ import { Community } from './Community';
 import { RecruitmentComment } from './RecruitmentComment';
 
 @Entity('recruitment')
-export class Recruitment {
+export class Recruitment extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -34,28 +34,28 @@ export class Recruitment {
 
   @ManyToOne(() => User, (User) => User.recruitmentList, {
     nullable: false,
-    lazy: true
+    lazy: true,
   })
   author: User;
 
   @OneToMany(() => RecruitmentToTag, (RecruitmentToTag) => RecruitmentToTag.recruitment, {
-    cascade: true
+    cascade: true,
   })
   recruitmentToTagList: RecruitmentToTag[];
 
   @OneToMany(() => RecruitmentApply, (RecruitmentApply) => RecruitmentApply.recruitment, {
-    cascade: true
+    cascade: true,
   })
   recruitmentApplyList: RecruitmentApply[];
 
   @ManyToOne(() => Community, (Community) => Community.recruitmentList, {
     nullable: false,
-    lazy: true
+    lazy: true,
   })
   community: Community;
 
   @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.recruitment, {
-    cascade: true
+    cascade: true,
   })
   recruitmentCommentList: RecruitmentComment[];
 }

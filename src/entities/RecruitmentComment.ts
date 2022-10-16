@@ -23,7 +23,7 @@ export class RecruitmentComment extends BaseEntity {
   user: User;
 
   @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentCommentList, {
-        onDelete: 'CASCADE',
+    onDelete: 'CASCADE',
     nullable: false,
     lazy: true,
   })

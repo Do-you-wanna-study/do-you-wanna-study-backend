@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { Role } from './enums/enums';
 import { StudyGroup } from './StudyGroup';
 import { User } from './User';

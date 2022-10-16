@@ -1,6 +1,7 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { StudyGroupPost } from './StudyGroupPost';
 import { StudyGroupToUser } from './StudyGroupToUser';
+import { StudyRetrospect } from './StudyRetrospect';
 
 @Entity('study_group')
 export class StudyGroup extends BaseEntity {
@@ -26,12 +27,17 @@ export class StudyGroup extends BaseEntity {
   updatedAt: Date;
 
   @OneToMany(() => StudyGroupPost, (StudyGroupPost) => StudyGroupPost.studyGroup, {
-    cascade: true
+    cascade: true,
   })
   studyGroupPostList: StudyGroupPost[];
 
   @OneToMany(() => StudyGroupToUser, (StudyGroupToUser) => StudyGroupToUser.studyGroup, {
-    cascade: true
+    cascade: true,
   })
   studyGroupToUserList: StudyGroupToUser[];
+
+  @OneToMany(() => StudyRetrospect, (StudyRetrospect) => StudyRetrospect.studyGroup, {
+    cascade: true,
+  })
+  studyRetrospectList: StudyRetrospect[];
 }

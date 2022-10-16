@@ -17,13 +17,13 @@ export class StudyGroupPostComment extends BaseEntity {
   updatedAt: Date;
 
   @ManyToOne(() => User, (User) => User.studyGroupPostCommentList, {
-            nullable: false,
-        lazy: true
+    nullable: false,
+    lazy: true,
   })
   user: User;
 
   @ManyToOne(() => StudyGroupPost, (StudyGroupPost) => StudyGroupPost.studyGroupPostCommentList, {
-        onDelete: 'CASCADE',
+    onDelete: 'CASCADE',
     nullable: false,
     lazy: true,
   })

@@ -5,6 +5,7 @@ import { RecruitmentComment } from './RecruitmentComment';
 import { StudyGroupPost } from './StudyGroupPost';
 import { StudyGroupPostComment } from './StudyGroupPostComment';
 import { StudyGroupToUser } from './StudyGroupToUser';
+import { StudyRetrospect } from './StudyRetrospect';
 import { UserEvaluation } from './UserEvaluation';
 import { UserToCommunity } from './UserToCommunity';
 
@@ -72,7 +73,12 @@ export class User extends BaseEntity {
   studyGroupPostCommentList: StudyGroupPostComment[];
 
   @OneToMany(() => StudyGroupToUser, (StudyGroupToUser) => StudyGroupToUser.user, {
-    cascade: true
+    cascade: true,
   })
   studyGroupToUserList: StudyGroupToUser[];
+
+  @OneToMany(() => StudyRetrospect, (StudyRetrospect) => StudyRetrospect.user, {
+    cascade: true,
+  })
+  studyRetrospectList: StudyRetrospect[];
 }

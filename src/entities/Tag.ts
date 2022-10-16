@@ -13,7 +13,7 @@ export class Tag extends BaseEntity {
   createdAt: Date;
 
   @OneToMany(() => RecruitmentToTag, (RecruitmentToTag) => RecruitmentToTag.tag, {
-    cascade: true
+    cascade: true,
   })
-  recruitmentToTagList: RecruitmentToTag[]
+  recruitmentToTagList: RecruitmentToTag[];
 }

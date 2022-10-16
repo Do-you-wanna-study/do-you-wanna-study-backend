@@ -1,7 +1,8 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { StudyGroup } from './StudyGroup';
 import { User } from './User';
 import { PostType } from './enums/enums';
+import { StudyGroupPostComment } from './StudyGroupPostComment';
 
 @Entity('study_group_post')
 export class StudyGroupPost extends BaseEntity {
@@ -35,4 +36,9 @@ export class StudyGroupPost extends BaseEntity {
         lazy: true
   })
   user: User;
+
+  @OneToMany(() => StudyGroupPostComment, (StudyGroupPostComment) => StudyGroupPostComment.studyGroupPost, {
+    cascade: true
+  })
+  studyGroupPostCommentList: StudyGroupPostComment[];
 }

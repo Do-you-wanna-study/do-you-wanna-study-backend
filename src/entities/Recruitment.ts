@@ -4,6 +4,7 @@ import { Status } from './enums/enums';
 import { User } from './User';
 import { RecruitmentApply } from './RecruitmentApply';
 import { Community } from './Community';
+import { RecruitmentComment } from './RecruitmentComment';
 
 @Entity('recruitment')
 export class Recruitment {
@@ -52,4 +53,9 @@ export class Recruitment {
     lazy: true
   })
   community: Community;
+
+  @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.recruitment, {
+    cascade: true
+  })
+  recruitmentCommentList: RecruitmentComment[];
 }

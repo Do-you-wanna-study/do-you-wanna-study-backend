@@ -2,6 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGenerat
 import { Recruitment } from './Recruitment';
 import { RecruitmentApply } from './RecruitmentApply';
 import { RecruitmentComment } from './RecruitmentComment';
+import { UserEvaluation } from './UserEvaluation';
 import { UserToCommunity } from './UserToCommunity';
 
 @Entity('user')
@@ -46,4 +47,14 @@ export class User extends BaseEntity {
     cascade: true
   })
   recruitmentCommentList: RecruitmentComment[];
+
+  @OneToMany(() => UserEvaluation, (UserEvaluation) => UserEvaluation.toUser, {
+    cascade: true
+  })
+  userEvaluationReceiverList: UserEvaluation[];
+
+  @OneToMany(() => UserEvaluation, (UserEvaluation) => UserEvaluation.fromUser, {
+    cascade: true
+  })
+  userEvaluationSenderList: UserEvaluation[];
 }

@@ -1,5 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Recruitment } from './Recruitment';
+import { UserToCommunity } from './UserToCommunity';
 
 @Entity('community')
 export class Community extends BaseEntity {
@@ -19,4 +20,9 @@ export class Community extends BaseEntity {
     cascade: true
   })
   recruitmentList: Recruitment[];
+
+  @OneToMany(() => UserToCommunity, (UserToCommunity) => UserToCommunity.community, {
+    cascade: true
+  })
+  userToCommunityList: UserToCommunity[];
 }

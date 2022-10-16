@@ -1,7 +1,8 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { RecruitmentToTag } from './RecruitmentToTag';
 
 @Entity('tag')
-export class User extends BaseEntity {
+export class Tag extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -10,4 +11,9 @@ export class User extends BaseEntity {
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
+
+  @OneToMany(() => RecruitmentToTag, (RecruitmentToTag) => RecruitmentToTag.tag, {
+    cascade: true
+  })
+  recruitmentToTagList: RecruitmentToTag[]
 }

@@ -3,7 +3,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGenerat
 @Entity('user')
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
-  public id: number;
+  id: number;
 
   @Column({ nullable: false, length: 100 })
   email: string;
@@ -23,5 +23,5 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  
+
 }

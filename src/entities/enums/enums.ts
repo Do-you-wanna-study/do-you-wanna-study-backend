@@ -1,9 +1,5 @@
-type Status =  'recruiting' | 'finished';
+type Status = 'recruiting' | 'finished';
 type PostType = 'notice' | 'normal';
-type Role = 'leader' | 'follower'
+type Role = 'leader' | 'follower';
 
-export {
-    Status,
-    PostType,
-    Role
-}
+export { Status, PostType, Role };

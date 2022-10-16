@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import connectDB from './loaders/db';
+import { connectDB } from './loaders/db';
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';

@@ -1,5 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Recruitment } from './Recruitment';
+import { RecruitmentApply } from './RecruitmentApply';
 
 @Entity('user')
 export class User extends BaseEntity {
@@ -25,7 +26,12 @@ export class User extends BaseEntity {
   updatedAt: Date;
 
   @OneToMany(() => Recruitment, (Recruitment) => Recruitment.author, {
-    cascade: true,
+    cascade: true
   })
   recruitmentList: Recruitment;
+
+  @OneToMany(() => RecruitmentApply, (RecruitmentApply) => RecruitmentApply.user, {
+    cascade: true
+  })
+  recruitmentApplyList: RecruitmentApply[];
 }

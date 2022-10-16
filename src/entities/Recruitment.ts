@@ -2,6 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, ManyToOne, Pri
 import { RecruitmentToTag } from './RecruitmentToTag';
 import { Status } from './enums/enums';
 import { User } from './User';
+import { RecruitmentApply } from './RecruitmentApply';
 
 @Entity('recruitment')
 export class Recruitment {
@@ -30,7 +31,8 @@ export class Recruitment {
   updatedAt: Date;
 
   @ManyToOne(() => User, (User) => User.recruitmentList, {
-    cascade: true
+    cascade: true,
+    lazy: true
   })
   author: User;
 
@@ -38,4 +40,9 @@ export class Recruitment {
     cascade: true
   })
   recruitmentToTagList: RecruitmentToTag[];
+
+  @OneToMany(() => RecruitmentApply, (RecruitmentApply) => RecruitmentApply.recruitment, {
+    cascade: true
+  })
+  recruitmentApplyList: RecruitmentApply[];
 }

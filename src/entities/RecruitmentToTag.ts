@@ -6,12 +6,16 @@ import { Tag } from './Tag';
 export class RecruitmentToTag {
 
     @ManyToOne(() => Tag, (Tag) => Tag.recruitmentToTagList, {
-        cascade: true
+        onDelete: "CASCADE",
+        nullable: false,
+        lazy: true
     })
     tag: Tag;
 
     @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentToTagList, {
-        cascade: true
+        onDelete: "CASCADE",
+        nullable: false,
+        lazy: true
     })
     recruitment: Recruitment;
 }

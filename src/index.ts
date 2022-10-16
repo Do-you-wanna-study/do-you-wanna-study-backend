@@ -1,10 +1,13 @@
 import express, { Request, Response, NextFunction } from 'express';
+import connectDB from './loaders/db';
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';
 const app = express();
 
 dotenv.config();
+
+connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -27,9 +30,9 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
 app
   .listen(config.port, () => {
     console.log(`
-    ################################################
-        ☁️  Deartoday Server listening on port ☁️
-    ################################################
+    ########################################################
+        ☁️ Do you wanna study Server listening on port ☁️
+    ########################################################
   `);
   })
   .on('error', (err) => {

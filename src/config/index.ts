@@ -22,5 +22,5 @@ export default {
   host: process.env.DB_HOST,
   database: process.env.DB_DB,
   password: process.env.DB_PASSWORD,
-  dbport: process.env.DB_PORT,
+  dbport: parseInt(process.env.DB_PORT as string, 10) as number,
 };

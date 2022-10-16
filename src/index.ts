@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import router from './router';
+import config from './config';
 import dotenv from 'dotenv';
 const app = express();
 

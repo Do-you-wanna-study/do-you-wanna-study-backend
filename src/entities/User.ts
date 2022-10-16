@@ -1,11 +1,12 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Recruitment } from './Recruitment';
 
 @Entity('user')
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ nullable: false, length: 100 })
+  @Column({ unique: true, nullable: false, length: 100 })
   email: string;
 
   @Column({ nullable: false, length: 6 })
@@ -23,5 +24,8 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-
+  @OneToMany(() => Recruitment, (Recruitment) => Recruitment.author, {
+    cascade: true,
+  })
+  recruitmentList: Recruitment;
 }

@@ -1,4 +1,5 @@
-import { Column, ManyToOne, Entity} from 'typeorm';
+import { ManyToOne, Entity} from 'typeorm';
+import { Recruitment } from './Recruitment';
 import { Tag } from './Tag';
 
 @Entity('recruitment_to_tag')
@@ -8,4 +9,9 @@ export class RecruitmentToTag {
         cascade: true
     })
     tag: Tag;
+
+    @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentToTagList, {
+        cascade: true
+    })
+    recruitment: Recruitment;
 }

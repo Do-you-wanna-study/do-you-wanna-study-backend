@@ -1,4 +1,5 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { StudyGroupPost } from './StudyGroupPost';
 
 @Entity('study_group')
 export class StudyGroup extends BaseEntity {
@@ -23,5 +24,8 @@ export class StudyGroup extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  
+  @OneToMany(() => StudyGroupPost, (StudyGroupPost) => StudyGroupPost.studyGroup, {
+    cascade: true
+  })
+  studyGroupPostList: StudyGroupPost[];
 }

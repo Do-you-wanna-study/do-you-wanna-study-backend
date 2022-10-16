@@ -4,6 +4,7 @@ import { RecruitmentApply } from './RecruitmentApply';
 import { RecruitmentComment } from './RecruitmentComment';
 import { StudyGroupPost } from './StudyGroupPost';
 import { StudyGroupPostComment } from './StudyGroupPostComment';
+import { StudyGroupToUser } from './StudyGroupToUser';
 import { UserEvaluation } from './UserEvaluation';
 import { UserToCommunity } from './UserToCommunity';
 
@@ -31,42 +32,47 @@ export class User extends BaseEntity {
   updatedAt: Date;
 
   @OneToMany(() => Recruitment, (Recruitment) => Recruitment.author, {
-    cascade: true
+    cascade: true,
   })
   recruitmentList: Recruitment;
 
   @OneToMany(() => RecruitmentApply, (RecruitmentApply) => RecruitmentApply.user, {
-    cascade: true
+    cascade: true,
   })
   recruitmentApplyList: RecruitmentApply[];
 
   @OneToMany(() => UserToCommunity, (UserToCommunity) => UserToCommunity.user, {
-    cascade: true
+    cascade: true,
   })
   userToCommunityList: UserToCommunity[];
 
   @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.user, {
-    cascade: true
+    cascade: true,
   })
   recruitmentCommentList: RecruitmentComment[];
 
   @OneToMany(() => UserEvaluation, (UserEvaluation) => UserEvaluation.toUser, {
-    cascade: true
+    cascade: true,
   })
   userEvaluationReceiverList: UserEvaluation[];
 
   @OneToMany(() => UserEvaluation, (UserEvaluation) => UserEvaluation.fromUser, {
-    cascade: true
+    cascade: true,
   })
   userEvaluationSenderList: UserEvaluation[];
 
   @OneToMany(() => StudyGroupPost, (StudyGroupPost) => StudyGroupPost.user, {
-    cascade: true
+    cascade: true,
   })
   studyGroupPostList: StudyGroupPost[];
 
   @OneToMany(() => StudyGroupPostComment, (StudyGroupPostComment) => StudyGroupPostComment.user, {
-    cascade: true
+    cascade: true,
   })
   studyGroupPostCommentList: StudyGroupPostComment[];
+
+  @OneToMany(() => StudyGroupToUser, (StudyGroupToUser) => StudyGroupToUser.user, {
+    cascade: true
+  })
+  studyGroupToUserList: StudyGroupToUser[];
 }

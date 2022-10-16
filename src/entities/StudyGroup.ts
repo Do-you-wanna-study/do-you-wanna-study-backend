@@ -1,5 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { StudyGroupPost } from './StudyGroupPost';
+import { StudyGroupToUser } from './StudyGroupToUser';
 
 @Entity('study_group')
 export class StudyGroup extends BaseEntity {
@@ -28,4 +29,9 @@ export class StudyGroup extends BaseEntity {
     cascade: true
   })
   studyGroupPostList: StudyGroupPost[];
+
+  @OneToMany(() => StudyGroupToUser, (StudyGroupToUser) => StudyGroupToUser.studyGroup, {
+    cascade: true
+  })
+  studyGroupToUserList: StudyGroupToUser[];
 }

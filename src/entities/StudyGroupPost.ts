@@ -32,13 +32,13 @@ export class StudyGroupPost extends BaseEntity {
   studyGroup: StudyGroup;
 
   @ManyToOne(() => User, (User) => User.studyGroupPostList, {
-        nullable: false,
-        lazy: true
+    nullable: false,
+    lazy: true,
   })
   user: User;
 
   @OneToMany(() => StudyGroupPostComment, (StudyGroupPostComment) => StudyGroupPostComment.studyGroupPost, {
-    cascade: true
+    cascade: true,
   })
   studyGroupPostCommentList: StudyGroupPostComment[];
 }

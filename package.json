@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Do-you-wanna-study/do-you-wanna-study-backend#readme",
   "dependencies": {
     "@types/pg": "^8.6.5",
+    "class-validator": "^0.13.2",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",

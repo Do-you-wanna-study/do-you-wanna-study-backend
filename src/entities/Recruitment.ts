@@ -3,6 +3,7 @@ import { RecruitmentToTag } from './RecruitmentToTag';
 import { Status } from './enums/enums';
 import { User } from './User';
 import { RecruitmentApply } from './RecruitmentApply';
+import { Community } from './Community';
 
 @Entity('recruitment')
 export class Recruitment {
@@ -31,7 +32,7 @@ export class Recruitment {
   updatedAt: Date;
 
   @ManyToOne(() => User, (User) => User.recruitmentList, {
-    cascade: true,
+    nullable: false,
     lazy: true
   })
   author: User;
@@ -45,4 +46,10 @@ export class Recruitment {
     cascade: true
   })
   recruitmentApplyList: RecruitmentApply[];
+
+  @ManyToOne(() => Community, (Community) => Community.recruitmentList, {
+    nullable: false,
+    lazy: true
+  })
+  community: Community;
 }

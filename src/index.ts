@@ -1,16 +1,27 @@
-import express, { Request, Response, NextFunction, response, request } from 'express';
+import express, { Request, Response, NextFunction} from 'express';
 import { AppDataSource, connectDB } from './loaders/db';
+import session from 'express-session'
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';
-const app = express();
+import passport from 'passport'
+import passportConfig from './passport'
 
+const app = express();
 dotenv.config();
 
 connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: false,
+}));
+
+passportConfig()
 
 app.use(router);
 
@@ -19,12 +30,17 @@ interface ErrorType {
   status: number;
 }
 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'production' ? err : {};
 
   res.status(err.status || 500);
-  res.render('error');
+  console.log(err)
+  res.send('error');
 });
 
 app

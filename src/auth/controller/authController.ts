@@ -20,7 +20,7 @@ const loginPage = async (req: Request, res: Response, next: NextFunction) => {
   //   </form>
   // `, '');
   // res.send(html);
-  const user = getUser("min")
+  const user = getUser("mihnhyuk@naver.com")
   console.log(user)
   res.send("login")
 }

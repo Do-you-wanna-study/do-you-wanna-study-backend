@@ -9,7 +9,7 @@ router.get('/login', authController.loginPage);
 
 router.post('/login',  passport.authenticate('local', { 
 	successRedirect: '/',
-	failureRedirect: '/login',
+	failureRedirect: '/auth/login',
  }), authController.loginPage)
 
 router.get('/logout', authController.logout)

@@ -4,9 +4,9 @@ import code from '../modules/statusCode'
 
 export default async (user_email: string) => {
 	const userRepository = AppDataSource.getRepository(User)
-	userRepository.find({
+	await userRepository.find({
 		where:{ email: user_email }
-	}).then((data : any) => {
+	}).then( (data : any) => {
 		console.log('data : ', data)
 		return data
 	}).catch((err : any)=>{

@@ -19,11 +19,11 @@ export default () => {
 			session: true,
 			passReqToCallback: false
 		},
-		function verify(email : string, password : string, done : Function) {
+		async function verify(email : string, password : string, done : Function) {
 			// console.log("local strategy")
 			// 이거 타입 뭐로해야됨?
-			const user : number | any = getUser(email)
-			console.log('user: ', user)
+			const user : number | any = await getUser(email);
+			console.log('user: ', user);
 
 			// if (user === code.DB_ERROR){
 			// 	return done(null, false, {

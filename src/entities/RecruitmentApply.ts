@@ -1,9 +1,11 @@
-import { Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 import { Recruitment } from './Recruitment';
 
 @Entity('recruitment_apply')
 export class RecruitmentApply {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
   @ManyToOne(() => User, (User) => User.recruitmentApplyList, {
     onDelete: 'CASCADE',
     nullable: false,

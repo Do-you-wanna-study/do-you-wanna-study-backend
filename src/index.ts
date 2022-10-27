@@ -1,5 +1,5 @@
-import express, { Request, Response, NextFunction } from 'express';
-import { connectDB } from './loaders/db';
+import express, { Request, Response, NextFunction, response, request } from 'express';
+import { AppDataSource, connectDB } from './loaders/db';
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';
@@ -40,4 +40,4 @@ app
     process.exit(1);
   });
 
-  export default app;
+export default app;

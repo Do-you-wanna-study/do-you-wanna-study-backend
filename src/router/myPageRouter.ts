@@ -1,8 +1,8 @@
-import express from 'express'
-import myPageController from '../controller/myPageController';
+import { Router } from 'express';
+import MyPageController from '../controller/MyPageController';
 
-const router : express.Router = express.Router({mergeParams : true});
+const router: Router = Router();
 
-router.get('/mypage', myPageController.getMyPage)
+router.get('/', MyPageController.getMyPage);
 
 export default router;

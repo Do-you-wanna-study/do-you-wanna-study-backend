@@ -24,7 +24,7 @@ export default () => {
 			// 이거 타입 뭐로해야됨?
 			const user : number | any = getUser(email)
 			console.log('user: ', user)
-			
+
 			// if (user === code.DB_ERROR){
 			// 	return done(null, false, {
 			// 		message: 'No such ID'

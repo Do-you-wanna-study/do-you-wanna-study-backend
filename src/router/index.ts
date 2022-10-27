@@ -1,14 +1,13 @@
 import { Router } from 'express';
-import auth from '../auth/router/authRouter'
-import community from './communityRouter'
-import myPage from './myPageRouter'
+import AuthRouter from '../auth/router/authRouter'
+import RecruitmentRouter from './RecruitmentRouter'
+import MyPageRouter from './myPageRouter'
 
 
 const router : Router = Router();
 
-router.use('/auth', auth)
-router.use('/community', community)
-router.use('/mypage', myPage)
-
+router.use('/auth', AuthRouter)
+router.use('/recruitment', RecruitmentRouter)
+router.use('/mypage', MyPageRouter)
 
 export default router;

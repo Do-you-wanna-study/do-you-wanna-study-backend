@@ -20,14 +20,12 @@ const loginPage = async (req: Request, res: Response, next: NextFunction) => {
   //   </form>
   // `, '');
   // res.send(html);
-  const user = getUser("mihnhyuk@naver.com")
-  console.log(user)
   res.send("login")
 }
 
 const tryLogin = passport.authenticate('local', { 
-	successRedirect: '/',
-	failureRedirect: '/login',
+	successRedirect: '/community',
+	failureRedirect: '/auth/login',
  })
 
 const logout = (req: Request, res: Response, next: NextFunction) => {

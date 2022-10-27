@@ -1,6 +1,8 @@
 import passport from 'passport';
 import passportLocal from 'passport-local'
-
+import { Repository } from 'typeorm';
+import getUser from '../model/getUser'
+import code from '../modules/statusCode'
 
 const LocalStrategy = passportLocal.Strategy
 
@@ -12,26 +14,30 @@ const authData = {
 export default () => {
 	passport.use(new LocalStrategy(
 		{
-			usernameField: 'id',
-			passwordField: 'pwd',
+			usernameField: 'email',
+			passwordField: 'password',
 			session: true,
 			passReqToCallback: false
 		},
-		function verify(username : any, password : any, done : Function) {
-			if (username == authData.email){
-				if (password == authData.password){
-					console.log('success');
-					return done(null, authData)
-				}
-				else{
-					return done(null, false, {
-						message: 'Incorrect password'
-					})
-				}
-			}else{
-				return done(null, false, {
-					message: 'Incorrect username'
-				})
-			}
+		function verify(email : string, password : string, done : Function) {
+			// console.log("local strategy")
+			// 이거 타입 뭐로해야됨?
+			const user : number | any = getUser(email)
+			console.log('user: ', user)
+			
+			// if (user === code.DB_ERROR){
+			// 	return done(null, false, {
+			// 		message: 'No such ID'
+			// 	})
+			// }
+			// else{
+			// 	if (password !== user.password){
+			// 		return done(null, false, {
+			// 			message: 'Incorrect password'
+			// 		})
+			// 	}else{
+			// 		return done(null, user.id)
+			// 	}
+			// }
 	}));
 }

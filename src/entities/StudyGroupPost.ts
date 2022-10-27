@@ -15,7 +15,7 @@ export class StudyGroupPost extends BaseEntity {
   @Column({ nullable: false, type: 'text' })
   description: string;
 
-  @Column({ name: 'post_type', default: 'normal', length: 10 })
+  @Column({ type: 'varchar', name: 'post_type', default: 'normal', length: 10 })
   postType: PostType;
 
   @CreateDateColumn({ name: 'created_at' })

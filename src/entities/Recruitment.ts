@@ -17,7 +17,7 @@ export class Recruitment extends BaseEntity {
   @Column({ nullable: false, type: 'text' })
   description: string;
 
-  @Column({ length: 10, default: 'recruiting' })
+  @Column({ type: 'varchar', length: 10, default: 'recruiting' })
   status: Status;
 
   @Column({ nullable: false })

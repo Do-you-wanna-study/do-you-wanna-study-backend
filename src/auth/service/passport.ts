@@ -1,6 +1,6 @@
 import passport from 'passport';
 import passportLocal from 'passport-local'
-import db from '../db/config'
+import getUser from '../model/getUser'
 import crypto from 'crypto'
 
 const LocalStrategy = passportLocal.Strategy
@@ -24,30 +24,9 @@ passport.use(new LocalStrategy(
 	},
 	function verify(username : any, password : any, done : Function) {
 		// console.log('LocalStragegy', username, password)
-		db.query('SELECT * FROM User WHERE user_id = ?',
-		[username], (err, results, field) => {
-			if (err){
-				console.log(err)
-				return done(null, false, {
-					message: 'db error'
-				})
-			}
-			else{
-				if (results.length !== 0){
-					if (results[0].password === password){
-						return done(null, results[0].user_id)
-					}
-					else{
-						return done(null, false, {
-							message: 'pwd error'
-						})
-					}
-				}
-				return done(null, false, {
-					message: 'id error'
-				})
-			}
-		})
+		const user = getUser(username)
+		console.log("user")
+		done(null, false)
 		// if (username == authData.email){
 		// 	if (password == authData.password){
 		// 		console.log('success');

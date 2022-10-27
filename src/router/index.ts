@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import auth from './authRouter'
+import auth from '../auth/router/authRouter'
 import community from './communityRouter'
 import myPage from './myPageRouter'
 

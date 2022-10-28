@@ -23,6 +23,9 @@ app.use(session({
 
 passportConfig()
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(router);
 
 interface ErrorType {
@@ -30,9 +33,6 @@ interface ErrorType {
   status: number;
 }
 
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
   res.locals.message = err.message;

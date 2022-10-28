@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import AuthRouter from '../auth/router/authRouter'
-import RecruitmentRouter from './RecruitmentRouter'
-import MyPageRouter from './myPageRouter'
+import RecruitmentRouter from '../recruitment/router/recruitmentRouter'
+import MyPageRouter from '../myPage/router/myPageRouter'
 
 
 const router : Router = Router();

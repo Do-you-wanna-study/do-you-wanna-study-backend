@@ -19,25 +19,21 @@ export default () => {
 			session: true,
 			passReqToCallback: false
 		},
-		function verify(email : string, password : string, done : Function) {
-			// console.log("local strategy")
-			// 이거 타입 뭐로해야됨?
-			const user : number | any = getUser(email)
-			console.log('user: ', user)
-
-			// if (user === code.DB_ERROR){
-			// 	return done(null, false, {
-			// 		message: 'No such ID'
-			// 	})
-			// }
-			// else{
-			// 	if (password !== user.password){
-			// 		return done(null, false, {
-			// 			message: 'Incorrect password'
-			// 		})
-			// 	}else{
-			// 		return done(null, user.id)
-			// 	}
-			// }
+		async function verify(email : string, password : string, done : Function) {
+			try{
+				const [user] : any =  await getUser(email)
+				if (user.password === password){
+					return done(null, user.id)
+				}else{
+					return done(null, false, {
+						message: 'Incorrect Password'
+					})
+				}
+			}catch(err){
+				console.log(err)
+				return done(null, false, {
+					message: 'No ID'
+				})
+			}
 	}));
 }

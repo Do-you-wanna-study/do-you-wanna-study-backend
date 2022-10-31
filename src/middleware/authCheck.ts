@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 
-const isLogin: Function = (req: Request, res: Response, next: NextFunction) => {
+const isLogin: any = (req: Request, res: Response, next: NextFunction) => {
   if (req.user) {
     console.log('logined ', req.user);
     next();
@@ -10,4 +10,4 @@ const isLogin: Function = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { isLogin };
+export default isLogin;

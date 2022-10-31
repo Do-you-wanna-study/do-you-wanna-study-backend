@@ -1,4 +1,4 @@
-// import loginPorcess from './loginProcess'
+import loginService from './loginService'
 import signUpService from './signUpService'
 
-export {signUpService}
+export {signUpService, loginService}

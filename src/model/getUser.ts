@@ -1,10 +1,10 @@
-import {AppDataSource} from '../loaders/db'
-import {User} from '../entities/User'
-import code from '../modules/statusCode'
+import { AppDataSource } from '../loaders/db';
+import { User } from '../entities/User';
+import code from '../modules/statusCode';
 
 export default function getUser(user_email: string) {
-	const userRepository = AppDataSource.getRepository(User)
-	return userRepository.find({
-		where:{ email: user_email }
-	})
+  const userRepository = AppDataSource.getRepository(User);
+  return userRepository.find({
+    where: { email: user_email },
+  });
 }

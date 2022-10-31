@@ -14,10 +14,9 @@ const doneStudy = (req : Request, res : Response) =>{
 	res.send('done study')
 }
 
-const communityController = {
+export default {
 	mainPage,
 	procStudy,
 	doneStudy
 }
 
-export default communityController;

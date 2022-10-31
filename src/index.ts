@@ -1,11 +1,12 @@
-import express, { Request, Response, NextFunction} from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import { AppDataSource, connectDB } from './loaders/db';
-import session from 'express-session'
+import session from 'express-session';
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';
-import passport from 'passport'
-import passportConfig from './passport'
+import passport from 'passport';
+import passportConfig from './passport';
+import recruitment from './recruitment/controller/RecruitmentController'
 
 const app = express();
 dotenv.config();
@@ -15,13 +16,15 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: false,
-}));
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
-passportConfig()
+passportConfig();
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,15 +36,17 @@ interface ErrorType {
   status: number;
 }
 
-
 app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'production' ? err : {};
 
   res.status(err.status || 500);
-  console.log(err)
+  console.log(err);
   res.send('error');
 });
+
+//기본 메인 페이지같은경우는 어디서 설정해주는게 맞는지 모르겠네
+app.get('/', recruitment.mainPage)
 
 app
   .listen(config.port, () => {

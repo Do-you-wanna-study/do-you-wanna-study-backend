@@ -4,7 +4,7 @@ import authController from '../controller'
 
 const router : express.Router = express.Router({mergeParams : true});
 router.get('/login', authController.loginPage);
-router.post('/login',  authController.tryLogin, authController.loginPage)
+router.post('/login',  authController.loginProcess)
 
 router.get('/logout', authController.logout)
 

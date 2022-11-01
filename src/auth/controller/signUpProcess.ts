@@ -9,10 +9,13 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 	if (req.body.email && req.body.nickname && req.body.password){
 	  const {email, nickname, password}= req.body
 	  if (await signUpService(email, password, nickname) === 0){
-		res.send(fail(statusCode.OK, "duplicated email"))
+		res.send(fail(statusCode.OK, "duplicated email", false))
+		return
 	  }
-	  res.send(success(statusCode.OK, "Success"))
+	  res.send(success(statusCode.OK, "Success", true))
+	  return
 	}else{
-		res.send(fail(statusCode.OK, "wrong input"))
+		res.send(fail(statusCode.OK, "wrong input", false))
+		return
 	}
   }

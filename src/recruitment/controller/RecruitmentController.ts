@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
+import { OpenRecruitmentService } from '../service';
 
-
-const mainPage = (req : Request, res : Response) => {
+const mainPage = async (req : Request, res : Response) => {
+	const data = await OpenRecruitmentService()
 	
-	res.send('default (all) Page!');
+	res.send(data);
 }
 
 const procStudy = (req : Request, res : Response) =>{

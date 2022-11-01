@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { RecruitmentToTag } from './RecruitmentToTag';
 import { Status } from './enums/enums';
 import { User } from './User';
@@ -20,7 +20,7 @@ export class Recruitment extends BaseEntity {
   @Column({ type: 'varchar', length: 10, default: 'recruiting' })
   status: Status;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, name: 'recruitment_number' })
   recruitmentNumber: number;
 
   @Column({ nullable: false, length: 50 })
@@ -36,6 +36,7 @@ export class Recruitment extends BaseEntity {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: 'author_id'})
   author: User;
 
   @OneToMany(() => RecruitmentToTag, (RecruitmentToTag) => RecruitmentToTag.recruitment, {
@@ -52,6 +53,7 @@ export class Recruitment extends BaseEntity {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: 'community_id'})
   community: Community;
 
   @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.recruitment, {

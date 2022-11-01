@@ -6,6 +6,7 @@ import config from './config';
 import dotenv from 'dotenv';
 import passport from 'passport';
 import passportConfig from './passport';
+import cors from 'cors'
 import recruitment from './recruitment/controller/RecruitmentController'
 
 const app = express();
@@ -15,6 +16,8 @@ connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(cors({origin: "http://192.168.1.204:3000"}))
 
 app.use(
   session({

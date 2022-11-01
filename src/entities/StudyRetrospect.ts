@@ -1,9 +1,11 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { StudyGroup } from './StudyGroup';
 import { User } from './User';
 
 @Entity('study_retrospect')
 export class StudyRetrospect {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
   @Column({ nullable: false, length: 255 })
   content: string;
 

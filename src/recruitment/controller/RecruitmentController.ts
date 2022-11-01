@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 
 
 const mainPage = (req : Request, res : Response) => {
+	
 	res.send('default (all) Page!');
 }
 
@@ -13,10 +14,9 @@ const doneStudy = (req : Request, res : Response) =>{
 	res.send('done study')
 }
 
-const community = {
+export default {
 	mainPage,
 	procStudy,
 	doneStudy
 }
 
-export default community;

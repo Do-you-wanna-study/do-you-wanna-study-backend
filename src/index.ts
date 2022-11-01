@@ -1,16 +1,36 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { connectDB } from './loaders/db';
+import { AppDataSource, connectDB } from './loaders/db';
+import session from 'express-session';
 import router from './router';
 import config from './config';
 import dotenv from 'dotenv';
-const app = express();
+import passport from 'passport';
+import passportConfig from './passport';
+import cors from 'cors'
+import recruitment from './recruitment/controller/RecruitmentController'
 
+const app = express();
 dotenv.config();
 
 connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(cors({origin: "http://192.168.1.204:3000"}))
+
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+
+passportConfig();
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(router);
 
@@ -24,8 +44,12 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
   res.locals.error = req.app.get('env') === 'production' ? err : {};
 
   res.status(err.status || 500);
-  res.render('error');
+  console.log(err);
+  res.send('error');
 });
+
+//기본 메인 페이지같은경우는 어디서 설정해주는게 맞는지 모르겠네
+app.get('/', recruitment.mainPage)
 
 app
   .listen(config.port, () => {
@@ -40,4 +64,4 @@ app
     process.exit(1);
   });
 
-  export default app;
+export default app;

@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import config from '../config';
-import { createConnection, ConnectionOptions, DataSource } from 'typeorm';
+import { DataSource } from 'typeorm';
+import { User } from '../entities/User';
 
 /**
  * 데이터베이스 커넥션을 생성한다.
@@ -14,12 +15,14 @@ const AppDataSource = new DataSource({
   database: config.database,
   synchronize: false,
   logging: true,
-  entities: ['../entities/*{.ts,.js}'],
+  entities: [__dirname + "/../entities/*.{js,ts}"],
 });
 
 const connectDB = async () => {
   AppDataSource.initialize()
-    .then(() => console.log('    ############# DATABASE CONNECTION SUCCESS ##############'))
+    .then(() => {
+      console.log('    ############# DATABASE CONNECTION SUCCESS ##############');
+    })
     .catch((error) => {
       console.log('ERROR IN DATABASE');
       throw error;

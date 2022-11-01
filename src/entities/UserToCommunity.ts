@@ -1,9 +1,12 @@
-import { Column, ManyToOne, Entity, CreateDateColumn } from 'typeorm';
+import { Column, ManyToOne, Entity, CreateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 import { Community } from './Community';
 
 @Entity('user_to_community')
 export class UserToCommunity {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
+  
   @ManyToOne(() => User, (User) => User.userToCommunityList, {
     onDelete: 'CASCADE',
     nullable: false,

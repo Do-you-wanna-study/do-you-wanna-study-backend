@@ -52,6 +52,7 @@ export class Recruitment extends BaseEntity {
   @ManyToOne(() => Community, (Community) => Community.recruitmentList, {
     nullable: false,
     lazy: true,
+  
   })
   @JoinColumn({name: 'community_id'})
   community: Community;

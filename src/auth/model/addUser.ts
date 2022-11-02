@@ -2,7 +2,6 @@ import { AppDataSource } from "../../loaders/db";
 import {User} from '../../entities/User'
 
 const addUser = async (user_email : string, user_password : string, user_nickname : string) => {
-    
     const userRepo = AppDataSource.getRepository(User);
     const user = userRepo.create({ 
       email: user_email,

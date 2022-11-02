@@ -21,7 +21,11 @@ export default () => {
           console.log(user)
           if (user.password === password) {
             console.log("??")
-            return done(null, user.id);
+            const userInfo = {
+              id: user.id,
+              nickname: user.nickname
+            }
+            return done(null, userInfo);
           } else {
             return done(null, false, {
               message: 'Incorrect Password',

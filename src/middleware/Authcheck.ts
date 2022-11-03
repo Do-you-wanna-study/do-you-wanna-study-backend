@@ -10,4 +10,5 @@ const isLogin: any = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+
 export default isLogin;

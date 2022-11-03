@@ -18,5 +18,5 @@ export default async (data: any, user: any) => {
  		status: 'recruiting',
 		// region: ,
 	})
-	return await recruitmentRepo.save(newPost)
+	// return await recruitmentRepo.save(newPost)
 }

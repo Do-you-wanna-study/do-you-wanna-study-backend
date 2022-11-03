@@ -20,7 +20,6 @@ export default () => {
           const [user]: any = await getUser(email);
           console.log(user)
           if (user.password === password) {
-            console.log("??")
             const userInfo = {
               id: user.id,
               nickname: user.nickname

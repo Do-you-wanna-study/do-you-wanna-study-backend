@@ -4,13 +4,10 @@ import signUpPage from './signUpPage'
 import signUpProcess from './signUpProcess'
 import loginProcess from './loginProcess'
 
-const authController ={
+export {
 	loginPage,
 	logout,
 	loginProcess,
 	signUpPage,
 	signUpProcess
 }
-
-
-export default authController

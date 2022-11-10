@@ -1,8 +1,9 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { StudyGroupPost } from './StudyGroupPost';
 import { StudyGroupToUser } from './StudyGroupToUser';
 import { StudyRetrospect } from './StudyRetrospect';
 import { Community } from './Community';
+import { User } from './User';
 
 @Entity('study_group')
 export class StudyGroup extends BaseEntity {

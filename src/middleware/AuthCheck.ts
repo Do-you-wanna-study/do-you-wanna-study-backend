@@ -1,4 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
+import { stat } from 'fs';
+import statusCode from '../modules/statusCode';
+import util from '../modules/util';
 
 const isLogin: any = (req: Request, res: Response, next: NextFunction) => {
   if (req.user) {
@@ -6,7 +9,7 @@ const isLogin: any = (req: Request, res: Response, next: NextFunction) => {
     next();
   } else {
     console.log('not logined');
-    res.redirect('/auth/login');
+    res.status(statusCode.OK).send(util.fail(statusCode.OK, "Need Login", false))
   }
 };
 

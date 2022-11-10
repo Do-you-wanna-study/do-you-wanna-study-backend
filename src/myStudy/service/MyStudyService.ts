@@ -1,6 +1,5 @@
+import { getMyStudy } from "../model"
 
-
-
-export default () => {
-	
+export default (userId : number) => {
+	return getMyStudy(userId)
 }

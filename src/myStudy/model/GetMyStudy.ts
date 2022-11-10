@@ -4,11 +4,13 @@ import { User } from "../../entities/User";
 import { AppDataSource } from "../../loaders/db"
 
 
-export default (userId : number) => {
+export default async (userId : number) => {
 	const studyGroupRepository = AppDataSource.getRepository(StudyGroup);
-	studyGroupRepository.find({
-		relations:{
-			
-		}
-	})
+	const result =
+	await studyGroupRepository.createQueryBuilder("study_group")
+	.leftJoinAndSelect("study_group.users", "user")
+	.where("user.id = :id", {id: userId})
+	.getMany()
+
+	console.log(result)
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from './enums/enums';
 import { StudyGroup } from './StudyGroup';
 import { User } from './User';
@@ -15,11 +15,13 @@ export class StudyGroupToUser {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "study_group_id"})
   studyGroup: StudyGroup;
 
   @ManyToOne(() => User, (User) => User.studyGroupToUserList, {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "user_id"})  
   user: User;
 }

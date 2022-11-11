@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import passport from 'passport';
 import passportConfig from './passport';
 import cors from 'cors'
-import {OpenRecruitmentController} from './recruitment/controller'
+import {RecruitmentController} from './recruitment/controller'
 
 const app = express();
 dotenv.config();
@@ -49,7 +49,7 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
 });
 
 //기본 메인 페이지같은경우는 어디서 설정해주는게 맞는지 모르겠네
-app.get('/', OpenRecruitmentController)
+app.get('/', RecruitmentController)
 
 app
   .listen(config.port, () => {

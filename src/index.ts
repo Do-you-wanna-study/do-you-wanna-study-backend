@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import passport from 'passport';
 import passportConfig from './passport';
 import cors from 'cors'
-import recruitment from './recruitment/controller/RecruitmentController'
+import {OpenRecruitmentController} from './recruitment/controller'
 
 const app = express();
 dotenv.config();
@@ -17,7 +17,7 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors({origin: "http://192.168.1.204:3000"}))
+app.use(cors())
 
 app.use(
   session({
@@ -49,7 +49,7 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
 });
 
 //기본 메인 페이지같은경우는 어디서 설정해주는게 맞는지 모르겠네
-app.get('/', recruitment.mainPage)
+app.get('/', OpenRecruitmentController)
 
 app
   .listen(config.port, () => {

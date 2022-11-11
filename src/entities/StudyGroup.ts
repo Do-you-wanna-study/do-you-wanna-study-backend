@@ -1,7 +1,9 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { StudyGroupPost } from './StudyGroupPost';
 import { StudyGroupToUser } from './StudyGroupToUser';
 import { StudyRetrospect } from './StudyRetrospect';
+import { Community } from './Community';
+import { User } from './User';
 
 @Entity('study_group')
 export class StudyGroup extends BaseEntity {
@@ -40,4 +42,26 @@ export class StudyGroup extends BaseEntity {
     cascade: true,
   })
   studyRetrospectList: StudyRetrospect[];
+
+  @ManyToMany(() => User)
+  @JoinTable({
+    name : "study_group_to_user",
+    joinColumn:{
+      name: "user_id",
+      referencedColumnName: "id"
+    },
+    inverseJoinColumn: {
+      name: "study_group_id",
+      referencedColumnName: "id"
+    }
+  })
+  users: User[]
+
+  @ManyToOne(() => Community, (Community) => Community.studyGroupList, {
+    nullable: false,
+    lazy: true,
+  
+  })
+  @JoinColumn({name: 'community_id'})
+  community: Community;
 }

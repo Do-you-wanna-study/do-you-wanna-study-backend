@@ -1,6 +1,5 @@
-import passport from 'passport'
+import { getUser } from "../model";
 
-export default passport.authenticate('local', { 
-	successRedirect: '/',
-	failureRedirect: '/auth/login',
- })
+export default async (email: string) => {
+	return await getUser(email)
+}

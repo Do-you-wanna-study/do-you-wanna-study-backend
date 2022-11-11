@@ -15,5 +15,5 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 	//     </p>
 	//   </form>
 	// `, '');
-	res.status(status.OK);
+	res.status(status.OK).send('ok');
   }

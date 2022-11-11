@@ -1,4 +1,4 @@
-import { ManyToOne, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ManyToOne, Entity, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 import { Recruitment } from './Recruitment';
 import { Tag } from './Tag';
 
@@ -11,6 +11,7 @@ export class RecruitmentToTag {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: 'tag_id'})
   tag: Tag;
 
   @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentToTagList, {
@@ -18,5 +19,6 @@ export class RecruitmentToTag {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: 'recruitment_id'})
   recruitment: Recruitment;
 }

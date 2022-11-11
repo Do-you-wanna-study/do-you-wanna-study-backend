@@ -6,11 +6,6 @@ import code from '../modules/statusCode';
 
 const LocalStrategy = passportLocal.Strategy;
 
-const authData = {
-  email: 'mihnhyuk@naver.com',
-  password: '1234',
-};
-
 export default () => {
   passport.use(
     new LocalStrategy(
@@ -23,8 +18,13 @@ export default () => {
       async function verify(email: string, password: string, done: Function) {
         try {
           const [user]: any = await getUser(email);
+          console.log(user)
           if (user.password === password) {
-            return done(null, user.id);
+            const userInfo = {
+              id: user.id,
+              nickname: user.nickname
+            }
+            return done(null, userInfo);
           } else {
             return done(null, false, {
               message: 'Incorrect Password',

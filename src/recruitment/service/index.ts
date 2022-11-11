@@ -1,4 +1,4 @@
-import OpenRecruitmentService from "./OpenRecruitmentService";
+import RecruitmentService from "./RecruitmentService";
 import RecruitmentPosingService from "./RecruitmentPosingService";
 
-export {OpenRecruitmentService, RecruitmentPosingService}
+export {RecruitmentService, RecruitmentPosingService}

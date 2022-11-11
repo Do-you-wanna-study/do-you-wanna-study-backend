@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import OpenRecruitmentController from './OpenRecruitmentController';
+import RecruitmentController from './RecruitmentController';
 import RecruitmentPostingController from './RecruitmentPostingController';
 
 const procStudy = (req : Request, res : Response) =>{
@@ -11,7 +11,7 @@ const doneStudy = (req : Request, res : Response) =>{
 }
 
 export {
-	OpenRecruitmentController,
+	RecruitmentController,
 	RecruitmentPostingController,
 	procStudy,
 	doneStudy

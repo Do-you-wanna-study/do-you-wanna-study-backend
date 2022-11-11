@@ -43,20 +43,6 @@ export class StudyGroup extends BaseEntity {
   })
   studyRetrospectList: StudyRetrospect[];
 
-  @ManyToMany(() => User)
-  @JoinTable({
-    name : "study_group_to_user",
-    joinColumn:{
-      name: "user_id",
-      referencedColumnName: "id"
-    },
-    inverseJoinColumn: {
-      name: "study_group_id",
-      referencedColumnName: "id"
-    }
-  })
-  users: User[]
-
   @ManyToOne(() => Community, (Community) => Community.studyGroupList, {
     nullable: false,
     lazy: true,

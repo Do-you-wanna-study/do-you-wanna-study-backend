@@ -32,6 +32,9 @@ export class Recruitment extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
+  // @Column({nullable: true})
+  // deadLine: Date;
+
   @ManyToOne(() => User, (User) => User.recruitmentList, {
     nullable: false,
     lazy: true,

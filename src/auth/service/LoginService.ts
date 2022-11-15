@@ -7,7 +7,7 @@ export default async (email: string, password: string) => {
 	if (user){
 		if (user[0].password === password){
 			
-			return util.success(statusCode.OK, "Login success", user);
+			return util.success(statusCode.OK, "Login success", user[0]);
 		}else{
 			return util.fail(statusCode.FORBIDDEN, "wrong password");
 		}

@@ -9,7 +9,7 @@ const isLogin: any = (req: Request, res: Response, next: NextFunction) => {
     next();
   } else {
     console.log('not logined');
-    res.status(statusCode.OK).send(util.fail(statusCode.OK, "Need Login", false))
+    res.status(statusCode.FORBIDDEN).send(util.fail(statusCode.FORBIDDEN, "Need Login", false))
   }
 };
 

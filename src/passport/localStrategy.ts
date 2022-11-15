@@ -18,8 +18,8 @@ export default () => {
       async function verify(email: string, password: string, done: Function) {
         try {
           const [user]: any = await getUser(email);
-          console.log(user)
           if (user.password === password) {
+            console.log(user)
             const userInfo = {
               id: user.id,
               nickname: user.nickname

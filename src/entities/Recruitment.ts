@@ -23,7 +23,7 @@ export class Recruitment extends BaseEntity {
   @Column({ nullable: false, name: 'recruitment_number' })
   recruitmentNumber: number;
 
-  @Column({ nullable: false, length: 50 })
+  @Column({ nullable: true, length: 50 })
   region: string;
 
   @CreateDateColumn({ name: 'created_at' })
@@ -32,8 +32,8 @@ export class Recruitment extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  // @Column({nullable: true})
-  // deadLine: Date;
+  @Column({nullable: true})
+  deadline: Date;
 
   @ManyToOne(() => User, (User) => User.recruitmentList, {
     nullable: false,

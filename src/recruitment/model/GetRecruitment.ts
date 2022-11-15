@@ -9,6 +9,7 @@ export default async (community?: number, filter?: string) => {
 	.leftJoinAndSelect("recruitment.recruitmentToTagList", "recruitment_to_tag")
 	.leftJoinAndSelect("recruitment_to_tag.tag", "tag")
 	.leftJoinAndSelect("recruitment.community", "community")
+	.leftJoinAndSelect("recruitment.recruitmentCommentList", "recruitment_comment")
 	.leftJoinAndSelect("recruitment.author", "user")
 	if (filter === "all"){
 		return result

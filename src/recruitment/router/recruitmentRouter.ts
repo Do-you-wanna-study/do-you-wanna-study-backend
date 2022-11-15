@@ -4,10 +4,7 @@ import isLogin from '../../middleware/AuthCheck';
 
 const router: Router = Router({mergeParams: true});
 
-router.get('/', RecruitmentController);
-router.get(['/:communityID', '/:communityID/:filter'] , RecruitmentController);
-
-
+router.get(['/', '/:communityID', '/:communityID/:filter'] , RecruitmentController);
 router.post('/', RecruitmentPostingController)
 
 export default router;

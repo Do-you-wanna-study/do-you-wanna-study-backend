@@ -3,13 +3,18 @@ import { RecruitmentService } from '../service';
 import { statusCode, util } from '../../modules';
 
 export default async (req : Request, res : Response) => {
-	let data
+	let communityId, filter
 	if (req.params.community === undefined){
-		data = await RecruitmentService(1)
+		communityId = 1
 	}else{
-		const com = req.params.community
-		data = await RecruitmentService(parseInt(com))
+		communityId = parseInt(req.params.community)
 	}
+	if (req.params.filter === undefined){
+		filter = "all"
+	}else[
+		filter = req.params.filter
+	]
+	const data = await RecruitmentService(communityId, filter)
 	res.status(statusCode.OK).send(util.success(statusCode.OK, "default page", data));
 
 }

@@ -6,9 +6,9 @@ export default async (data: any, user: any) => {
 	const recruitmentRepo = AppDataSource.getRepository(Recruitment)
 	const communityRepo = AppDataSource.getRepository(Community)
 	const [communityID] = await communityRepo.find({
-							where: { id : 1,}
+							where: { id : data.community_id,}
 						})
-	console.log("data: ", data, parseInt(data.recruit_number))
+	
 	const newPost = recruitmentRepo.create({
 		title: data.title,
 		description: data.description,
@@ -16,7 +16,9 @@ export default async (data: any, user: any) => {
 		author: user.id,
 		community: communityID,
  		status: 'recruiting',
-		// region: ,
+		region: data.region,
+		deadline: data.deadline,
+		// recruitmentToTagList: 
 	})
 	// return await recruitmentRepo.save(newPost)
 }

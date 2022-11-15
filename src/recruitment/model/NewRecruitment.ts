@@ -8,7 +8,8 @@ export default async (data: any, user: any) => {
 	const [communityID] = await communityRepo.find({
 							where: { id : data.community_id,}
 						})
-	
+	console.log(data)
+	console.log(typeof(data.deadline))
 	const newPost = recruitmentRepo.create({
 		title: data.title,
 		description: data.description,

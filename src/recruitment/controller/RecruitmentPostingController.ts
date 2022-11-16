@@ -5,7 +5,6 @@ import {RecruitmentPosingService} from '../service'
 
 export default async (req: Request, res: Response) => {
 	const data = req.body
-	console.log(data)
 	if (req.user){
 		RecruitmentPosingService(data, req.user)
 		res.status(statusCode.OK).send(util.success(statusCode.OK, "good"))

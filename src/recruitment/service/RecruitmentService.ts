@@ -1,7 +1,8 @@
 import getRecruitment from "../model/GetRecruitment"
 
-export default async (community: number, filter: string) => {
-	const recruitmentList = await getRecruitment(community, filter)
+export default async (community: number, filter: string, search?: string) => {
+	const recruitmentList =  search === undefined ? await getRecruitment(community, filter) 
+		: await getRecruitment(community, filter, search)
 	console.log(recruitmentList)
 	return recruitmentList
 }

@@ -6,6 +6,7 @@ import { Recruitment } from './Recruitment';
 export class RecruitmentApply {
   @PrimaryGeneratedColumn('increment')
   id: number;
+
   @ManyToOne(() => User, (User) => User.recruitmentApplyList, {
     onDelete: 'CASCADE',
     nullable: false,

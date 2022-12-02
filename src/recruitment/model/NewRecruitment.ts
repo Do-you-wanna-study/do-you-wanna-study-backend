@@ -46,6 +46,5 @@ export default async (data: any, user: any) => {
 		rToTag.tag = t
 		AppDataSource.manager.save(rToTag)
 	}
-	//놀시간이 잇니>?
 	return 1
 }

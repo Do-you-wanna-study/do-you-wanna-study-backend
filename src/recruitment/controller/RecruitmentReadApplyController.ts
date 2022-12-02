@@ -10,6 +10,7 @@ export default async (req: Request, res: Response) => {
     res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, 'bad request, no recruitment ID', false));
   } else {
     const recruitmentId = parseInt(req.query.id.toString());
-    RecruitmentReadApplyService(userId, recruitmentId);
+    const result = await RecruitmentReadApplyService(userId, recruitmentId);
+    res.status(result.status).send(result);
   }
 };

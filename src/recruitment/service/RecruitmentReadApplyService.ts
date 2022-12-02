@@ -1,4 +1,4 @@
-import { GetRecruitementAuthor } from '../model';
+import { GetApplyList, GetRecruitementAuthor } from '../model';
 import { util, statusCode } from '../../modules';
 
 export default async (userId: number, recruitmentId: number) => {
@@ -10,4 +10,10 @@ export default async (userId: number, recruitmentId: number) => {
   if (author !== userId) {
     return util.fail(statusCode.UNAUTHORIZED, 'Unauthorized access');
   }
+  const applyList = GetApplyList(recruitmentId);
+  console.log(applyList);
+  if (applyList === null) {
+    return util.fail(statusCode.DB_ERROR, 'DB query failed, no applyList');
+  }
+  return util.success(statusCode.OK, 'success', applyList);
 };

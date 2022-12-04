@@ -5,6 +5,7 @@ import util from '../../modules/util'
 
 export default async (req: Request, res: Response) =>{
 	const email = req.body.email
-	const data = await LoginService(email)
+	const password = req.body.password
+	const data = await LoginService(email, password)
 	res.status(status.OK).send(util.success(status.OK, "login success", data))
 }

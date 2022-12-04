@@ -3,7 +3,7 @@ import { Recruitment } from '../../entities/Recruitment';
 
 
 export default async (community: number, pageNumber: number, filter?: string,  search?: string) => {
-	let perPage = 10
+	let perPage = 100
 
 	const result =  await AppDataSource
 	.getRepository(Recruitment)

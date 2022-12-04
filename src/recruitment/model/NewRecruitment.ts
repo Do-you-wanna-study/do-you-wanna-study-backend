@@ -11,7 +11,6 @@ export default async (data: any, user: any) => {
   const [communityID] = await communityRepo.find({
     where: { id: data.community_id },
   });
-  console.log(data);
   const newPost = recruitmentRepo.create({
     title: data.title,
     description: data.description,

@@ -63,5 +63,6 @@ export class Recruitment extends BaseEntity {
   @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.recruitment, {
     cascade: true,
   })
+  @JoinColumn({ name: 'recruitment_comment' })
   recruitmentCommentList: RecruitmentComment[];
 }

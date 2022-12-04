@@ -23,4 +23,14 @@ export default {
   database: process.env.DB_DB,
   password: process.env.DB_PASSWORD,
   dbport: parseInt(process.env.DB_PORT as string, 10) as number,
+  
+  /**
+   * jwt secret
+   */
+  jwtSecret: process.env.JWT_SECRET as string,
+
+  /**
+  * jwt algorithm
+  */
+  jwtAlgo: process.env.JWT_ALGO as string,
 };

@@ -1,11 +1,16 @@
 import {Response, Request} from 'express'
 import { LoginService } from '../service'
-import status from '../../modules/statusCode'
+import {statusCode, util } from '../../modules'
+
 
 export default async (req: Request, res: Response) =>{
-	const email : string = req.body.email
-	const password : string = req.body.password
-	console.log(password)
+	const email = req.body.email
+	const password = req.body.password
 	const data = await LoginService(email, password)
-	res.status(status.OK).send(data)
+	if (data === 0){
+		res.status(statusCode.FORBIDDEN).send(util.fail(statusCode.FORBIDDEN, "wrong password"));
+	} else if (data === 1) {
+		res.status(statusCode.OK).send(util.fail(statusCode.BAD_REQUEST, "no matched users")) ;
+	}
+	res.status(statusCode.OK).send(util.success(statusCode.OK,"Success" ,data));
 }

@@ -11,7 +11,7 @@ export default async (req : Request, res : Response) => {
 	else{
 		const recruitmentId : number = parseInt(req.query.recruitmentId.toString())
 		//@ts-ignore
-		const userId : number = parseInt(req.user.id.toString())
+		const userId : number = parseInt(req.body.userId.toString())
 		RecruitmentCommentPostService(recruitmentId, userId, req.body.content)
 		res.status(statusCode.OK).send(util.success(statusCode.OK, "post comment"))
 	}

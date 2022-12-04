@@ -10,6 +10,10 @@ const message = {
   FORBIDDEN: '권한이 없는 유저의 요청입니다.',
   DUPLICATED: '이미 존재하는 데이터입니다.',
   DB_ERROR: '데이터베이스 오류입니다.',
+
+  EXPIRED_TOKEN: '만료된 토큰입니다.',
+  INVALID_TOKEN: '유효하지 않은 토큰입니다.',
+  NULL_VALUE_TOKEN: '토큰이 없습니다.',
 };
 
 export default message;

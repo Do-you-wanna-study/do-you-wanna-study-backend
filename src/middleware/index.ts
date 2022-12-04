@@ -1,3 +1,4 @@
 import authCheck from './AuthCheck'
+import auth from './auth'
 
-export {authCheck}
+export {authCheck, auth}

@@ -15,7 +15,7 @@ export default async (data: any, user: any) => {
     title: data.title,
     description: data.description,
     recruitmentNumber: data.recruitment_number,
-    author: user.id,
+    author: user,
     community: communityID,
     status: 'recruiting',
     region: data.region,

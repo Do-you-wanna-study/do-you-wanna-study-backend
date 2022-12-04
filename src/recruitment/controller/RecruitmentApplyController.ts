@@ -10,7 +10,7 @@ export default async (req : Request, res : Response) => {
 	}
 	else{
 		//@ts-ignore
-		const userId : number = req.user.id
+		const userId : number = req.body.userId
 		const recruitmentId : number = parseInt(req.query.id.toString())
 
 		RecruitmentApplyService(userId, recruitmentId, req.body.description)

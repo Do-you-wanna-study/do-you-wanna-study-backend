@@ -1,19 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import OpenRecruitmentController from './OpenRecruitmentController';
+import RecruitmentController from './RecruitmentController';
 import RecruitmentPostingController from './RecruitmentPostingController';
+import RecruitmentDetailController from './RecruitmentDetailController';
+import RecruitmentCommentPostController from './RecruitmentCommentPostController';
+import RecruitmentApplyController from './RecruitmentApplyController';
+import RecruitmentReadApplyController from './RecruitmentReadApplyController';
 
-const procStudy = (req : Request, res : Response) =>{
-	res.send('processing study')
-}
-
-const doneStudy = (req : Request, res : Response) =>{
-	res.send('done study')
-}
-
-export {
-	OpenRecruitmentController,
-	RecruitmentPostingController,
-	procStudy,
-	doneStudy
-}
-
+export { RecruitmentController, RecruitmentPostingController, RecruitmentDetailController, RecruitmentCommentPostController, RecruitmentApplyController, RecruitmentReadApplyController };

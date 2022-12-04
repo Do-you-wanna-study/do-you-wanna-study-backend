@@ -1,4 +1,4 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { User } from './User';
 import { Recruitment } from './Recruitment';
 
@@ -20,6 +20,7 @@ export class RecruitmentComment extends BaseEntity {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "user_id"})
   user: User;
 
   @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentCommentList, {
@@ -27,5 +28,6 @@ export class RecruitmentComment extends BaseEntity {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "recruitment_id"})
   recruitment: Recruitment;
 }

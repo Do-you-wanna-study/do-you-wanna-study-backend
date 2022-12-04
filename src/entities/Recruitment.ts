@@ -23,7 +23,7 @@ export class Recruitment extends BaseEntity {
   @Column({ nullable: false, name: 'recruitment_number' })
   recruitmentNumber: number;
 
-  @Column({ nullable: false, length: 50 })
+  @Column({ nullable: true, length: 50 })
   region: string;
 
   @CreateDateColumn({ name: 'created_at' })
@@ -32,17 +32,20 @@ export class Recruitment extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
+  @Column({ nullable: true, default: null })
+  deadline: Date;
+
   @ManyToOne(() => User, (User) => User.recruitmentList, {
     nullable: false,
     lazy: true,
   })
-  @JoinColumn({name: 'author_id'})
+  @JoinColumn({ name: 'author_id' })
   author: User;
 
   @OneToMany(() => RecruitmentToTag, (RecruitmentToTag) => RecruitmentToTag.recruitment, {
     cascade: true,
   })
-  @JoinColumn({name: 'recruitment_to_tag'})
+  @JoinColumn({ name: 'recruitment_to_tag' })
   recruitmentToTagList: RecruitmentToTag[];
 
   @OneToMany(() => RecruitmentApply, (RecruitmentApply) => RecruitmentApply.recruitment, {
@@ -53,13 +56,13 @@ export class Recruitment extends BaseEntity {
   @ManyToOne(() => Community, (Community) => Community.recruitmentList, {
     nullable: false,
     lazy: true,
-  
   })
-  @JoinColumn({name: 'community_id'})
+  @JoinColumn({ name: 'community_id' })
   community: Community;
 
   @OneToMany(() => RecruitmentComment, (RecruitmentComment) => RecruitmentComment.recruitment, {
     cascade: true,
   })
+  @JoinColumn({ name: 'recruitment_comment' })
   recruitmentCommentList: RecruitmentComment[];
 }

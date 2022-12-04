@@ -1,4 +1,4 @@
-import { Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, ManyToOne, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 import { User } from './User';
 import { Recruitment } from './Recruitment';
 
@@ -6,11 +6,13 @@ import { Recruitment } from './Recruitment';
 export class RecruitmentApply {
   @PrimaryGeneratedColumn('increment')
   id: number;
+
   @ManyToOne(() => User, (User) => User.recruitmentApplyList, {
     onDelete: 'CASCADE',
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "user_id"})
   user: User;
 
   @ManyToOne(() => Recruitment, (Recruitment) => Recruitment.recruitmentApplyList, {
@@ -18,6 +20,7 @@ export class RecruitmentApply {
     nullable: false,
     lazy: true,
   })
+  @JoinColumn({name: "recruitment_id"})
   recruitment: Recruitment;
 
   @Column({ nullable: false, length: 255 })

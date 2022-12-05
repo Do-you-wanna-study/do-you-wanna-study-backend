@@ -2,7 +2,7 @@ import {addUser, getUser} from '../model'
 
 export default async (new_email: string, new_password: string, new_nickname: string ) => {
 	try{
-		const [userList] = await getUser(new_email)
+		const userList = await getUser(new_email)
 		// console.log("signupService: ", userList)
 		if (userList){
 			return 0

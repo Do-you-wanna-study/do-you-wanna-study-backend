@@ -5,6 +5,7 @@ import { RecruitmentApplyService } from '../service';
 
 export default async (req : Request, res : Response) => {
 	if (req.body.description === undefined || req.query.id === undefined){
+		console.log(req.body.description, req.query)
 		res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, "BAD apply Requeset, no body"))
 		return
 	}

@@ -23,6 +23,9 @@ export class RecruitmentApply {
   @JoinColumn({name: "recruitment_id"})
   recruitment: Recruitment;
 
+  @Column({nullable: false, default: false})
+  status: boolean
+
   @Column({ nullable: false, length: 255 })
   content: string;
 

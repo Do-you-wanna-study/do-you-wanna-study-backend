@@ -4,5 +4,15 @@ import GetRecruitmentDetail from './GetRecruitmentDetail';
 import ApplyToRecruitment from './ApplyToRecruitment';
 import GetRecruitementAuthor from './GetRecruitementAuthor';
 import GetApplyList from './GetApplyList';
+import GetApplyAuthor from './GetApplyAuthor';
+import AcceptApply from './AcceptApply';
 
-export { GetRecruitment, NewRecruitment, GetRecruitmentDetail, ApplyToRecruitment, GetRecruitementAuthor, GetApplyList };
+export { GetRecruitment, 
+	NewRecruitment, 
+	GetRecruitmentDetail, 
+	ApplyToRecruitment,
+	GetRecruitementAuthor, 
+	GetApplyList,
+	GetApplyAuthor,
+	AcceptApply
+};

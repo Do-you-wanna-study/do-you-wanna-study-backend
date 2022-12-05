@@ -3,7 +3,7 @@ import { Recruitment } from '../../entities/Recruitment';
 import { User } from '../../entities/User';
 
 export default async (recruitmentId: number) => {
-  return AppDataSource.getRepository(Recruitment).findOne({
+  return (await AppDataSource.getRepository(Recruitment).findOne({
     relations: {
       author: true,
     },
@@ -15,5 +15,5 @@ export default async (recruitmentId: number) => {
     where: {
       id: recruitmentId,
     },
-  });
+  }))?.author
 };

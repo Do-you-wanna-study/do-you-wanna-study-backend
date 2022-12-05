@@ -7,7 +7,7 @@ export default async (userId: number, recruitmentId: number) => {
     return util.fail(statusCode.DB_ERROR, 'DB query failed, check recruitment ID');
   }
   //@ts-ignore
-  const author = recruitment.__author__.id;
+  const author = recruitment.id;
   if (author !== userId) {
     
     return util.fail(statusCode.UNAUTHORIZED, 'Unauthorized access');

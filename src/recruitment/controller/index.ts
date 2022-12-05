@@ -6,6 +6,7 @@ import RecruitmentCommentPostController from './RecruitmentCommentPostController
 import RecruitmentApplyController from './RecruitmentApplyController';
 import RecruitmentReadApplyController from './RecruitmentReadApplyController';
 import RecruitmentApplyAcceptController from './RecruitmentApplyAcceptController';
+import RecruitmentCreateController from './RecruitmentCreateController';
 
 export { RecruitmentController, 
 	RecruitmentPostingController, 
@@ -13,5 +14,6 @@ export { RecruitmentController,
 	RecruitmentCommentPostController, 
 	RecruitmentApplyController,
 	RecruitmentReadApplyController,
-	RecruitmentApplyAcceptController
+	RecruitmentApplyAcceptController,
+	RecruitmentCreateController,
  };

@@ -6,6 +6,7 @@ import GetRecruitementAuthor from './GetRecruitementAuthor';
 import GetApplyList from './GetApplyList';
 import GetApplyAuthor from './GetApplyAuthor';
 import AcceptApply from './AcceptApply';
+import CreateStudy from './CreateStudy';
 
 export { GetRecruitment, 
 	NewRecruitment, 
@@ -14,5 +15,6 @@ export { GetRecruitment,
 	GetRecruitementAuthor, 
 	GetApplyList,
 	GetApplyAuthor,
-	AcceptApply
+	AcceptApply,
+	CreateStudy,
 };

@@ -1,9 +1,13 @@
 import { Router } from 'express';
-import myPageController from '../controller';
-import isLogin from '../../middleware/AuthCheck';
+import auth from '../../middleware/auth';
+import { 
+	MypageController,
+	MyRecruitController,
+ } from '../controller';
 
 const router: Router = Router();
 
-router.get('/', isLogin, myPageController.getMyPage);
+router.get('/', auth, MypageController);
+router.get('/myrecruit', auth, MyRecruitController);
 
 export default router;

@@ -9,6 +9,8 @@ export default async (req: Request, res: Response) => {
   } else {
     const id: number = parseInt(req.query.id.toString());
     const result = await RecruitmentDeatilService(id);
+    const t = await result?.recruitmentCommentList[0].user
+    console.log(t)
     res.status(statusCode.OK).send(util.success(statusCode.OK, 'recruitment detail', result));
   }
 };

@@ -10,8 +10,10 @@ export default async (recruitmentId: number) => {
       .leftJoinAndSelect('recruitment_to_tag.tag', 'tag')
       .leftJoinAndSelect('recruitment.community', 'community')
       .leftJoinAndSelect('recruitment.recruitmentCommentList', 'recruitment_comment')
-      .leftJoinAndSelect('recruitment_comment.user', 'comment_user')
-      .leftJoinAndSelect('recruitment.author', 'user')
+      .leftJoin('recruitment.author', 'user')
+      .leftJoin('recruitment_comment.user', 'comment_user')
+      .addSelect('user.nickname', 'user_nickname')
+      .addSelect('comment_user.nickname', 'comment_user_nickname')
       .where('recruitment.id = :id', { id: recruitmentId })
       .getOne();
 

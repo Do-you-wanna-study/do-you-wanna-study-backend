@@ -4,13 +4,18 @@ import {statusCode, util} from "../../modules"
 
 export default async (email: string, password: string) => {
 	const user = await getUser(email)
-	if (user[0].password === password){
-		const accessToken = getToken(user[0].id);
-		
-		return accessToken;
-	} else if (user.length !== 1) {
+	if (user === null) {
 		return 1;
-	} else {
+	}if (user.password === password){
+		const accessToken = getToken(user.id);
+		const data = {
+			accessToken: accessToken,
+			nickname: user.nickname,
+			email: user.email
+		}
+		return data;
+	} 
+	else {
 		return 0;
 	}
 }

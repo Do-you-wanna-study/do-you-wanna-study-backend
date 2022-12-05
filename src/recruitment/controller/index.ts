@@ -5,5 +5,13 @@ import RecruitmentDetailController from './RecruitmentDetailController';
 import RecruitmentCommentPostController from './RecruitmentCommentPostController';
 import RecruitmentApplyController from './RecruitmentApplyController';
 import RecruitmentReadApplyController from './RecruitmentReadApplyController';
+import RecruitmentApplyAcceptController from './RecruitmentApplyAcceptController';
 
-export { RecruitmentController, RecruitmentPostingController, RecruitmentDetailController, RecruitmentCommentPostController, RecruitmentApplyController, RecruitmentReadApplyController };
+export { RecruitmentController, 
+	RecruitmentPostingController, 
+	RecruitmentDetailController, 
+	RecruitmentCommentPostController, 
+	RecruitmentApplyController,
+	RecruitmentReadApplyController,
+	RecruitmentApplyAcceptController
+ };

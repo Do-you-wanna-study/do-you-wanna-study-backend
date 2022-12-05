@@ -6,6 +6,7 @@ import {
   RecruitmentCommentPostController,
   RecruitmentApplyController,
   RecruitmentReadApplyController,
+  RecruitmentApplyAcceptController
 } from '../controller';
 import { auth } from '../../middleware';
 
@@ -21,4 +22,5 @@ router.post('/', auth, RecruitmentPostingController);
 router.post('/detail/comment', auth, RecruitmentCommentPostController);
 router.post('/detail/apply', auth, RecruitmentApplyController);
 
+router.patch('/detail/accept', auth, RecruitmentApplyAcceptController)
 export default router;

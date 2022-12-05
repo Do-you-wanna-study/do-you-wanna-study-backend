@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { myStudy } from '../controller';
-import {authCheck} from '../../middleware'
+import {auth} from '../../middleware'
 
 const router : Router = Router();
 
-router.get('/', authCheck, myStudy)
+router.get('/', auth, myStudy)
 
 
 

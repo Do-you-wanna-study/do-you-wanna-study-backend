@@ -19,7 +19,7 @@ export class StudyGroup extends BaseEntity {
   @Column({ nullable: false })
   period: number;
 
-  @Column({ name: 'is_finished', width: 1, default: false })
+  @Column({ name: 'is_finished', default: false })
   isFinished: boolean;
 
   @CreateDateColumn({ name: 'created_at' })

@@ -5,13 +5,14 @@ import {statusCode, util} from '../../modules';
 
 
 export default (req: Request, res: Response, next: NextFunction) => {
-	if (req.user !== undefined){
-		// @ts-ignore
-		const result = myStudyService(req.user.id)
+	const userId = req.body.userId
+	const result = myStudyService(userId)
+	if (result !== undefined){
+		console.log(result)
 		res.status(statusCode.OK).send(util.success(statusCode.OK, "my study list", result));
 	}
 	else{
-		res.status(statusCode.OK).send(util.fail(statusCode.OK, "no user data"));
+		res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, "no user data"));
 	}
 };
   

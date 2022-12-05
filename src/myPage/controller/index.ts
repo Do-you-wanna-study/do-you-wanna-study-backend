@@ -1,9 +1,10 @@
-import getMyPage from './getMyPage'
+import MypageController from './MypageController.ts'
+import MyRecruitController from './MyRecruitController';
 
 
 
-const myPageController = {
-	getMyPage
+
+export {
+	MypageController,
+	MyRecruitController,
 }
-
-export default myPageController;

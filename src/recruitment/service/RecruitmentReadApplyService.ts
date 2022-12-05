@@ -6,11 +6,13 @@ export default async (userId: number, recruitmentId: number) => {
   if (recruitment === null) {
     return util.fail(statusCode.DB_ERROR, 'DB query failed, check recruitment ID');
   }
-  const author = recruitment.author.id;
+  //@ts-ignore
+  const author = recruitment.__author__.id;
   if (author !== userId) {
+    
     return util.fail(statusCode.UNAUTHORIZED, 'Unauthorized access');
   }
-  const applyList = GetApplyList(recruitmentId);
+  const applyList = await GetApplyList(recruitmentId);
   console.log(applyList);
   if (applyList === null) {
     return util.fail(statusCode.DB_ERROR, 'DB query failed, no applyList');

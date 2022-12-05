@@ -16,6 +16,7 @@ router.get(['/', '/community/:communityID', '/community/:communityID/:filter'], 
 router.get('/detail', RecruitmentDetailController);
 router.get('/detail/readapply', auth, RecruitmentReadApplyController);
 
+
 router.post('/', auth, RecruitmentPostingController);
 router.post('/detail/comment', auth, RecruitmentCommentPostController);
 router.post('/detail/apply', auth, RecruitmentApplyController);

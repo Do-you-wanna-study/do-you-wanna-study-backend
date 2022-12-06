@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import AuthRouter from '../auth/router/authRouter'
+import AuthRouter from '../auth/router'
 import RecruitmentRouter from '../recruitment/router'
 import MyPageRouter from '../myPage/router'
 import MyStudyRouter from '../myStudy/router';

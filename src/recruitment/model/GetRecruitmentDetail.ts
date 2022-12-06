@@ -12,6 +12,7 @@ export default async (recruitmentId: number) => {
       .leftJoinAndSelect('recruitment.recruitmentCommentList', 'recruitment_comment')
       .leftJoin('recruitment.author', 'user')
       .leftJoin('recruitment_comment.user', 'comment_user')
+      .addSelect('user.id', 'user_id')
       .addSelect('user.nickname', 'user_nickname')
       .addSelect('comment_user.nickname', 'comment_user_nickname')
       .where('recruitment.id = :id', { id: recruitmentId })

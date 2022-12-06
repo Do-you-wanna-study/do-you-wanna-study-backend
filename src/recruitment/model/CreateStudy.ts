@@ -9,5 +9,5 @@ export default async (recruitmentId : number, groupName: string, community : Com
 	study.period = period
 	study.startDate = startDate
 	
-	return study.save()
+	return await AppDataSource.manager.save(study)
 }

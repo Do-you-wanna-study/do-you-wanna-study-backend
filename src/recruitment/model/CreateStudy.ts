@@ -8,6 +8,7 @@ export default async (recruitmentId : number, groupName: string, community : Com
 	study.community = community
 	study.period = period
 	study.startDate = startDate
-	
+	study.isFinished = false
+
 	return await AppDataSource.manager.save(study)
 }

@@ -1,5 +1,5 @@
-import getMyStudy from "./GetMyStudy";
+import GetMyStudy from "./GetMyStudy";
+import GetLeader from "./GetLeader";
 
 
-
-export {getMyStudy}
+export {GetMyStudy, GetLeader}

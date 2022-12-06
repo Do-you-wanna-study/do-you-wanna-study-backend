@@ -4,7 +4,6 @@ import util from '../../modules/util';
 import { RecruitmentReadApplyService } from '../service';
 
 export default async (req: Request, res: Response) => {
-  //@ts-ignore
   const userId = req.body.userId;
   if (req.query.id === undefined) {
     res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, 'bad request, no recruitment ID', false));

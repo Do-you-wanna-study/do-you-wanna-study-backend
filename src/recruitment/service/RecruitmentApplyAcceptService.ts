@@ -1,4 +1,4 @@
-import { GetApplyAuthor, AcceptApply, GetRecruitementAuthor } from "../model"
+import { AcceptApply, GetRecruitementAuthor } from "../model"
 import { util, statusCode } from "../../modules"
 
 export default async (userId : number, applyId : number) => {

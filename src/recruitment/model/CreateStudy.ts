@@ -8,5 +8,6 @@ export default async (recruitmentId : number, groupName: string, community : Com
 	study.community = community
 	study.period = period
 	study.startDate = startDate
-
+	
+	return study.save()
 }

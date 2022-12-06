@@ -14,6 +14,6 @@ export default async (userId : number, recruitmentId : number, groupName: string
 		console.log(author)
 		return util.fail(statusCode.BAD_REQUEST, "Unauthorized User")
 	}
-	CreateStudy(recruitmentId, groupName, recruitment?.community, period, startDate)
-	return util.success(statusCode.OK, "OK")
+	const result = await CreateStudy(recruitmentId, groupName, recruitment?.community, period, startDate)
+	return util.success(statusCode.OK, "OK", result)
 }

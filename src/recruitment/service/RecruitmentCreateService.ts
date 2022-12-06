@@ -11,7 +11,6 @@ export default async (userId : number, recruitmentId : number, groupName: string
 		return util.fail(statusCode.DB_ERROR, "DB error")
 	}
 	if (author.id !== userId){
-		console.log(author)
 		return util.fail(statusCode.BAD_REQUEST, "Unauthorized User")
 	}
 	const result = await CreateStudy(recruitmentId, groupName, recruitment?.community, period, startDate)

@@ -3,8 +3,10 @@ import {statusCode, util} from '../../modules';
 import { EndMystudyService } from '../service';
 
 
-export default (req: Request, res: Response, next: NextFunction) => {
+export default async (req: Request, res: Response, next: NextFunction) => {
 	const userId = req.body.userId
-	EndMystudyService(userId, 1)
+	const result = await EndMystudyService(userId, 6)
+
+	res.status(result.status).send(result)
 };
   

@@ -2,8 +2,24 @@ import {AppDataSource} from '../../loaders/db'
 import { RecruitmentApply } from '../../entities/RecruitmentApply';
 import { User } from '../../entities/User';
 import { Recruitment } from '../../entities/Recruitment';
+import { check } from 'express-validator';
 
 export default async (userId: number, recruitmentId: number, description : string) => {
+	const checkDup = await AppDataSource.getRepository(RecruitmentApply)
+	.find({
+		where:{
+			recruitment:{
+				id: recruitmentId
+			},
+			user:{
+				id: userId
+			}
+		}
+	})
+	if (check.length !== 0){
+		return -1
+	}
+
 	const user = await AppDataSource.getRepository(User).find({
 		where :{
 			id : userId
@@ -20,5 +36,5 @@ export default async (userId: number, recruitmentId: number, description : strin
 	apply.user = user[0]
 
 	AppDataSource.manager.save(apply)
-	return
+	return 1
 }

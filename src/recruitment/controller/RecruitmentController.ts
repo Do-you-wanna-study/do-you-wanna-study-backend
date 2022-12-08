@@ -2,11 +2,9 @@ import { NextFunction, Request, Response } from 'express';
 import { RecruitmentService } from '../service';
 import { statusCode, util } from '../../modules';
 
-export default async (req: Request, res: Response) => {
-  let communityId, filter, pageNumber;
+function requestCheck(req: Request){
+  let communityId, pageNumber, filter, search
 
-  console.log(req.params);
-  console.log(req.user);
   if (req.params.community === undefined) {
     communityId = 1;
   } else {
@@ -23,9 +21,20 @@ export default async (req: Request, res: Response) => {
   } else {
     filter = req.params.filter;
   }
-  if (req.query.search !== undefined) {
-    // @ts-ignore
-    const data = await RecruitmentService(communityId, filter, pageNumber, req.query.search);
+  if (req.query.search !== undefined){
+    search = req.query.search.toString()
+  }
+  return {communityId, pageNumber, filter, search}
+}
+
+export default async (req: Request, res: Response) => {
+  const {communityId, filter, pageNumber, search} = requestCheck(req);
+
+  console.log(req.params);
+  console.log(req.user);
+  
+  if (search !== undefined) {    
+    const data = await RecruitmentService(communityId, filter, pageNumber, search);
     res.status(statusCode.OK).send(util.success(statusCode.OK, 'default page', data));
   } else {
     const data = await RecruitmentService(communityId, filter, pageNumber);

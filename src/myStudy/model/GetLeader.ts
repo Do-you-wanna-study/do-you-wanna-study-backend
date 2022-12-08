@@ -1,21 +1,12 @@
 import { StudyGroupToUser } from "../../entities/StudyGroupToUser"
 import { AppDataSource } from "../../loaders/db"
 
-
-export default (userId : number) => {
+export default async (studyId: number) => {
 	return AppDataSource
 	.getRepository(StudyGroupToUser)
-	.find({
+	.findOne({
 		where:{
-			user:{
-				id : userId
-			}
-		},
-		relations:{
-			studyGroup : {
-				community:true
-			},			
+			role: 'leader'
 		}
 	})
-	
 }

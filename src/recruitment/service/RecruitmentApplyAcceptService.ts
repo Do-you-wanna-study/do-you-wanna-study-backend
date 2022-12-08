@@ -1,8 +1,8 @@
-import { GetApplyAuthor, AcceptApply } from "../model"
+import { AcceptApply, GetRecruitementAuthor } from "../model"
 import { util, statusCode } from "../../modules"
 
 export default async (userId : number, applyId : number) => {
-	const author = await GetApplyAuthor(applyId)
+	const author = await GetRecruitementAuthor(userId)
 	if (author === undefined){
 		return util.fail(statusCode.BAD_REQUEST, "Bad Request, no such apply")
 	}

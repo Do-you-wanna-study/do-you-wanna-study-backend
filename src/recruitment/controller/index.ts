@@ -7,6 +7,7 @@ import RecruitmentApplyController from './RecruitmentApplyController';
 import RecruitmentReadApplyController from './RecruitmentReadApplyController';
 import RecruitmentApplyAcceptController from './RecruitmentApplyAcceptController';
 import RecruitmentCreateController from './RecruitmentCreateController';
+import GetApplicantGradeController from './GetApplicantGradeController';
 
 export { RecruitmentController, 
 	RecruitmentPostingController, 
@@ -16,4 +17,6 @@ export { RecruitmentController,
 	RecruitmentReadApplyController,
 	RecruitmentApplyAcceptController,
 	RecruitmentCreateController,
+	GetApplicantGradeController
+	
  };

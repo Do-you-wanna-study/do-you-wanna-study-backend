@@ -7,6 +7,8 @@ import GetApplyList from './GetApplyList';
 import GetApplyAuthor from './GetApplyAuthor';
 import AcceptApply from './AcceptApply';
 import CreateStudy from './CreateStudy';
+import GetApplicantGrade from './GetApplicantGrade';
+import GetUserId from './GetUserId';
 
 export { GetRecruitment, 
 	NewRecruitment, 
@@ -17,4 +19,6 @@ export { GetRecruitment,
 	GetApplyAuthor,
 	AcceptApply,
 	CreateStudy,
+	GetApplicantGrade,
+	GetUserId
 };

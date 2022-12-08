@@ -7,7 +7,8 @@ import {
   RecruitmentApplyController,
   RecruitmentReadApplyController,
   RecruitmentApplyAcceptController,
-  RecruitmentCreateController
+  RecruitmentCreateController,
+  GetApplicantGradeController
 } from '../controller';
 import { auth } from '../../middleware';
 
@@ -16,6 +17,7 @@ const router: Router = Router({ mergeParams: true });
 router.get(['/', '/community/:communityID', '/community/:communityID/:filter'], RecruitmentController);
 router.get('/detail', RecruitmentDetailController);
 router.get('/detail/readapply', auth, RecruitmentReadApplyController);
+router.get('/detail/user/grade', auth, GetApplicantGradeController)
 
 router.post('/', auth, RecruitmentPostingController);
 router.post('/detail/comment', auth, RecruitmentCommentPostController);

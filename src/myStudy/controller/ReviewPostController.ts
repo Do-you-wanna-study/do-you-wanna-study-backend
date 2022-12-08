@@ -14,7 +14,6 @@ function requestCheck(req: Request){
 }
 
 export default async (req: Request, res: Response, next: NextFunction) => {
-	
 	const inputData = requestCheck(req)
 	if (inputData.studyId === undefined){
 		res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, "no study id"))

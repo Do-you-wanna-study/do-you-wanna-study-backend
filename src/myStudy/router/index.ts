@@ -13,8 +13,7 @@ router.get('/', auth, myStudy)
 router.get('/detail/review', auth, ReviewPageController)
 
 router.post('/detail/review', auth, ReviewPostController)
-
+ 
 router.patch('/detail/end', auth, EndMystudyController)
-
 
 export default router;

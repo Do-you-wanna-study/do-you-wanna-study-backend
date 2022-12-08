@@ -10,7 +10,7 @@ export class StudyGroupToUser {
   @Column({ type: 'varchar', default: 'follower', length: 10 })
   role: Role;
   
-  @Column({default: false, nullable: false})
+  @Column({name: "is_reviewed", default: false, nullable: false})
   isReviewed: boolean
 
   @ManyToOne(() => StudyGroup, (StudyGroup) => StudyGroup.studyGroupToUserList, {

@@ -1,4 +1,6 @@
+import { RecruitmentApply } from "../../entities/RecruitmentApply"
 import { StudyGroup } from "../../entities/StudyGroup"
+import { StudyGroupToUser } from "../../entities/StudyGroupToUser"
 import { StudyRetrospect } from "../../entities/StudyRetrospect"
 import { User } from "../../entities/User"
 import { UserEvaluation } from "../../entities/UserEvaluation"
@@ -7,30 +9,30 @@ import { AppDataSource } from "../../loaders/db"
 export default async (inputData: any) => {
 	const {userId, studyId, content, evaluates} = inputData
 	
-	// const studyGroup = await AppDataSource
-	// .getRepository(StudyGroup)
-	// .findOne({where:{id : studyId}})
-	// const user = await AppDataSource
-	// .getRepository(User)
-	// .findOne({where:{id:userId}})
-	
 	const studyGroup = new StudyGroup()
 	studyGroup.id = studyId
-	// await AppDataSource.manager.save(studyGroup)
-
+	
 	const user = new User()
 	user.id = userId
-	// await AppDataSource.manager.save(user)
 
-	const newReview = new StudyRetrospect()
-	newReview.content = content
 	if (( studyGroup) === null || ( user) === null){
 		return -1
 	}
+
+	const newReview = new StudyRetrospect()
+	newReview.content = content
 	newReview.studyGroup = studyGroup
 	newReview.user = user
-	console.log(newReview)
+
 	AppDataSource.manager.save(newReview)
+
+	AppDataSource
+	.createQueryBuilder()
+	.update(StudyGroupToUser)
+	.set({"is_reviewed": true})
+	.where("study_group_id = :id", {id: studyId})
+	.andWhere("user_id = :id", {id : userId})
+	.execute()
 
 	for (let i = 0 ; i < evaluates.length ; i++){
 		const toUser = new User()
@@ -45,5 +47,6 @@ export default async (inputData: any) => {
 		newEvaluate.helpful = parseInt(evaluates[i].helpful)
 		AppDataSource.manager.save(newEvaluate)
 	}
+
 	return	
 }

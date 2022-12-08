@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { myStudyService } from '../service';
 import {statusCode, util} from '../../modules';
-// import { User } from '../../type/express'
 
 
 export default async (req: Request, res: Response, next: NextFunction) => {

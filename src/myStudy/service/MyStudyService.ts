@@ -1,5 +1,7 @@
-import { getMyStudy } from "../model"
+import { GetMyStudy } from "../model"
 
 export default (userId : number) => {
-	return getMyStudy(userId)
+	return GetMyStudy(userId)
+	
+	
 }

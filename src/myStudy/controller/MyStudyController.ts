@@ -4,9 +4,9 @@ import {statusCode, util} from '../../modules';
 // import { User } from '../../type/express'
 
 
-export default (req: Request, res: Response, next: NextFunction) => {
+export default async (req: Request, res: Response, next: NextFunction) => {
 	const userId = req.body.userId
-	const result = myStudyService(userId)
+	const result = await myStudyService(userId)
 	if (result !== undefined){
 		console.log(result)
 		res.status(statusCode.OK).send(util.success(statusCode.OK, "my study list", result));

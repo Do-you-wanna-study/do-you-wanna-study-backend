@@ -70,6 +70,14 @@ export default async (recruitmentId : number, groupName: string, community : Com
 	}
 	await AppDataSource.manager.save(study)
 	await AppDataSource.manager.save(studyUsers)
+
+	AppDataSource
+	.createQueryBuilder()
+	.delete()
+	.from(RecruitmentApply)
+	.where("recruitment_id = :id", {id: recruitmentId})
+	.execute()
+
 	return
 	// return await AppDataSource.manager.save(study)
 }

@@ -1,9 +1,11 @@
 import myStudy from './MyStudyController'
 import EndMystudyController from './EndMystudyController'
-import ReviewController from './ReviewController'
+import ReviewPostController from './ReviewPostController'
+import ReviewPageController from './ReviewPageController'
 
 export {
 	myStudy,
 	EndMystudyController,
-	ReviewController
+	ReviewPostController,
+	ReviewPageController
 }

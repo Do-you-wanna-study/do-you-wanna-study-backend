@@ -1,4 +1,4 @@
-import { BaseEntity, Column, ManyToOne, Entity, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
+  import { BaseEntity, Column, ManyToOne, Entity, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { User } from './User';
 
 @Entity('user_evaluation')
@@ -17,9 +17,6 @@ export class UserEvaluation extends BaseEntity {
 
   @Column({ nullable: false })
   helpful: number;
-
-  @Column({ nullable: false, length: 50 })
-  title: string;
 
   @Column({ nullable: false, length: 255 })
   content: string;

@@ -14,5 +14,8 @@ export default async (userId : number, recruitmentId : number, groupName: string
 		return util.fail(statusCode.BAD_REQUEST, "Unauthorized User")
 	}
 	const result = await CreateStudy(recruitmentId, groupName, recruitment?.community, period, startDate)
+	if (result === -1){
+		return util.fail(statusCode.DB_ERROR, "can't find author")
+	}
 	return util.success(statusCode.OK, "OK", result)
 }

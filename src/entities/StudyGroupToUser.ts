@@ -9,6 +9,9 @@ export class StudyGroupToUser {
   id: number;
   @Column({ type: 'varchar', default: 'follower', length: 10 })
   role: Role;
+  
+  @Column({default: false, nullable: false})
+  isReviewed: boolean
 
   @ManyToOne(() => StudyGroup, (StudyGroup) => StudyGroup.studyGroupToUserList, {
     onDelete: 'CASCADE',

@@ -16,7 +16,8 @@ export default async (userId: number, recruitmentId: number, description : strin
 			}
 		}
 	})
-	if (check.length !== 0){
+	console.log(checkDup)
+	if (checkDup.length !== 0){
 		return -1
 	}
 

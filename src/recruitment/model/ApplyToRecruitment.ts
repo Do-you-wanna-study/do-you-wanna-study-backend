@@ -2,7 +2,6 @@ import {AppDataSource} from '../../loaders/db'
 import { RecruitmentApply } from '../../entities/RecruitmentApply';
 import { User } from '../../entities/User';
 import { Recruitment } from '../../entities/Recruitment';
-import { check } from 'express-validator';
 
 export default async (userId: number, recruitmentId: number, description : string) => {
 	const checkDup = await AppDataSource.getRepository(RecruitmentApply)

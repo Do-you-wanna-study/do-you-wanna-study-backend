@@ -3,6 +3,7 @@ import { Recruitment } from '../../entities/Recruitment';
 import { User } from '../../entities/User';
 
 export default async (recruitmentId: number) => {
+
   return (await AppDataSource.getRepository(Recruitment).findOne({
     relations: {
       author: true,
